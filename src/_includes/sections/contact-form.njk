@@ -1,0 +1,62 @@
+<!-- CTA -->
+<section class="~py-16/24 ~px-4/8">
+    <div class="container m-auto flex max-xl:flex-col xl:items-center ~gap-12/16 xl:~gap-16/32">
+        <!-- TEXT + SOCIALS -->
+        <div class="flex flex-col gap-8">
+            <!-- HEADING + TEXT -->
+            <div class="flex flex-col items-start ~gap-5/6">
+                <!-- TOPPER + HEADING -->
+                <div class="flex flex-col items-start gap-4">
+                    <span class="topper">{{ contactForm.topper }}</span>
+                    <h2 class="~max-w-sm/xl font-lekton ~text-3xl/5xl text-black dark:text-white font-bold">{{ contactForm.heading }}</h2>
+                </div>
+
+                <!-- TITLE + TEXT -->
+                <div class="flex flex-col gap-3">
+                    <p class="text-lg text-black dark:text-white font-bold">{{ contactForm.title }}</p>
+                    <p class="max-w-lg text-base text-neutral-800 dark:text-neutral-200">{{ contactForm.text }}</p>
+                </div>
+            </div>
+
+            <!-- SOCIALS -->
+            <ul class="flex gap-2">
+                {% for item in contactForm.socials %}
+                    <li>
+                        <a href="{{ item.url }}" target="{{ item.target }}" class="flex justify-center items-center p-3 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 rounded-full [&>svg]:h-7 [&>svg]:w-7 transition-colors duration-300 hover:text-black dark:hover:bg-neutral-950 dark:hover:text-white">
+                            <span class="sr-only">{{ item.text }}</span>
+
+                            {% include item.icon %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="border-gradient flex-1 p-0.5 rounded-3xl">
+            <form class="grid grid-cols-2 gap-y-8 gap-x-4 ~p-8/12 bg-neutral-100 dark:bg-neutral-900 rounded-3xl" method="POST" action="/dekujeme" netlify netlify-honeypot="bot-field">
+                <!-- HONEYPOT -->
+                <input class="sr-only" type="search" name="bot-field" tabindex="-1" autocomplete="off" spellcheck="false" placeholder="Leave this empty" aria-hidden="true">
+
+                {% for field in contactForm.form.fields %}
+                    <label class="flex flex-col gap-2.5 {%- if field.type === 'textarea' %} col-span-2 {%- endif %}">
+                        <p class="flex items-start">
+                            <span class="font-lekton text-black dark:text-white font-bold">{{ field.label }}</span>
+                            {% if field.required %}
+                                <span class="text-xs text-primary">*</span>
+                            {% endif %}
+                        </p>
+
+                        {% if field.type === "textarea" %}
+                            <textarea class="input min-h-[6lh] max-h-[30lh] rounded-2xl" name="{{ field.name }}"></textarea>
+                        {% else %}
+                            <input class="input" type="{{ field.type }}" name="{{ field.name }}" autocomplete="{{ field.autocomplete }}" {%- if field.required %} required {%- endif %}>
+                        {% endif %}
+                    </label>
+                {% endfor %}
+
+                <button type="submit" class="btn col-span-2">{{ contactForm.form.send }}</button>
+            </form>
+        </div>
+    </div>
+</section>

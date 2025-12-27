@@ -1,0 +1,348 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --text-shadow-2xs: 0px 1px 0px rgb(0 0 0 / 0.15);
+    --text-shadow-xs: 0px 1px 1px rgb(0 0 0 / 0.2);
+    --text-shadow-sm:
+      0px 1px 0px rgb(0 0 0 / 0.075),
+      0px 1px 1px rgb(0 0 0 / 0.075),
+      0px 2px 2px rgb(0 0 0 / 0.075);
+    --text-shadow-md:
+      0px 1px 1px rgb(0 0 0 / 0.1),
+      0px 1px 2px rgb(0 0 0 / 0.1),
+      0px 2px 4px rgb(0 0 0 / 0.1);
+    --text-shadow-lg:
+      0px 1px 2px rgb(0 0 0 / 0.1),
+      0px 3px 2px rgb(0 0 0 / 0.1),
+      0px 4px 8px rgb(0 0 0 / 0.1);
+  }
+}
+
+@layer components {
+  /* =================== */
+  /* === CTA BUTTONS === */
+  /* =================== */
+
+  .btn {
+    @apply bg-primary font-lekton text-center text-black font-bold !leading-none rounded-full shadow;
+  }
+
+  .btn {
+    @apply py-3 px-6 text-lg;
+  }
+
+  .btn-sm {
+    @apply py-2 px-5 text-lg;
+  }
+
+  .btn-lg {
+    @apply py-4 px-8 text-xl;
+  }
+
+  /* ============== */
+  /* === TOPPER === */
+  /* ============== */
+
+  .topper {
+    @apply py-2 px-4 bg-primary-400 font-lekton text-black leading-none rounded-full;
+  }
+
+  /* ======================= */
+  /* === BORDER GRADIENT === */
+  /* ======================= */
+
+  .border-gradient {
+    position: relative;
+    /* This creates the 'border' background */
+    background: radial-gradient(
+      var(--glow-radius, 300px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(var(--glow-rgb, 132, 0, 255), calc(var(--glow-intensity, 0) * 0.8)) 0%,
+      rgba(var(--glow-rgb, 132, 0, 255), calc(var(--glow-intensity, 0) * 0.4)) 30%,
+      transparent 70%
+    ), 
+    linear-gradient(to bottom, theme('colors.neutral.100'), theme('colors.neutral.300'));
+    
+    /* Ensure the background covers the whole LI */
+    background-origin: border-box;
+    background-clip: border-box;
+  }
+
+  html.dark .border-gradient {
+    background: radial-gradient(
+      var(--glow-radius, 300px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(var(--glow-rgb, 132, 0, 255), calc(var(--glow-intensity, 0) * 0.8)) 0%,
+      rgba(var(--glow-rgb, 132, 0, 255), calc(var(--glow-intensity, 0) * 0.4)) 30%,
+      transparent 70%
+    ), 
+    linear-gradient(to bottom, theme('colors.neutral.700'), theme('colors.neutral.900'));
+  }
+
+  /* ====================== */
+  /* === SPOTLIGHT CARD === */
+  /* ====================== */
+
+  .global-spotlight {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    /* Use your primary color for the glow */
+    background: radial-gradient(
+      circle,
+      theme('colors.primary.DEFAULT / 0.15') 0%,
+      theme('colors.primary.DEFAULT / 0.05') 40%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  /* ================== */
+  /* === FORM INPUT === */
+  /* ================== */
+
+  .input {
+    @apply py-2 px-4 bg-neutral-200 dark:bg-neutral-800 text-sm text-neutral-800 dark:text-neutral-200 placeholder:text-neutral-600 dark:placeholder:text-neutral-400 border border-neutral-300 dark:border-neutral-700 rounded-full focus:border-primary focus:ring-2 focus:ring-primary/25;
+  }
+}
+
+
+/* ============= */
+/* === FONTS === */
+/* ============= */
+
+/* lekton-regular - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Lekton';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/lekton-v21-latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* lekton-700 - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Lekton';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/lekton-v21-latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* inter-regular - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/inter-v20-latin-ext-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-500 - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../fonts/inter-v20-latin-ext-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-600 - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/inter-v20-latin-ext-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* inter-700 - latin-ext */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/inter-v20-latin-ext-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* ====================================== */
+/* === DARKMODE SWITCH AND TRANSITION === */
+/* ====================================== */
+
+:root {
+  --bg-planet-bright: #ecd590;
+  --bg-polygon-bright: #f2a54c;
+  --bg-planet-shadow: #828894;
+  --bg-planet-lightshadow: #3a3a3a;
+  --dot-size: 0.25rem;
+}
+
+html {  
+  body {
+    label.darkmode-container {
+      height: 100%;
+      cursor: pointer;
+      position: relative;
+      /* To make outline on mobile invisible */
+      -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+    
+      input[type="checkbox"] {
+          height: 0;
+          width: 0;
+          visibility: hidden;
+          position: absolute;
+      }
+    
+      .planet {
+        display: block;
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        overflow: hidden;
+        background:
+          radial-gradient(3.75em, 99%, transparent 100%);
+        background-color: var(--bg-planet-bright);
+        background-repeat: no-repeat;
+        position: relative;
+        will-change: background;
+        transition: all 400ms ease;
+        z-index: 11;
+      
+        /* Safari transition issue */
+        backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
+        
+        &::after {
+          content: "";
+          background-color: var(--bg-planet-shadow);
+          width: 1.25rem;
+          height: 1.25rem;
+          position: absolute;
+          border-radius: 50%;
+          will-change: opacity, transform, background-color;
+          opacity: 0;
+          transform: translate(2em, -2em);
+          transition: opacity 400ms ease, transform 400ms ease, background-color 400ms ease;
+        }
+      }
+    
+      .elements {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 400ms ease;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        svg {
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          opacity: 1;
+          transition: transform 400ms ease, opacity 200ms ease, width 200ms ease, height 200ms ease;
+          polygon {
+            fill: var(--bg-polygon-bright);
+            transition: fill 400ms ease;
+          }
+          &:first-child {
+            transform: translate(0, -0.8rem);
+          }
+          &:nth-child(2) {
+            transform: translate(0.55em, -0.55em) rotate(45deg);
+          }
+          &:nth-child(3) {
+            transform: translate(0.8em, 0) rotate(90deg);
+          }
+          &:nth-child(4) {
+            transform: translate(0.55em, 0.55em) rotate(135deg);
+          }
+          &:nth-child(5) {
+            transform: translate(0, 0.8em) rotate(180deg);
+          }
+          &:nth-child(6) {
+            transform: translate(-0.55em, 0.55em) rotate(225deg);
+          }
+          &:nth-child(7) {
+            transform: translate(-0.8em, 0) rotate(270deg);
+          }
+          &:nth-child(8) {
+            transform: translate(-0.55em, -0.55em) rotate(315deg);
+          }
+          &:nth-child(9) {
+            transform: translate(0em, -1em);
+            opacity: 0;
+          }
+          &:nth-child(10) {
+            transform: translate(0em, -1.5em);
+            opacity: 0;
+          }
+          &:nth-child(11) {
+            transform: translate(0em, -1.25em);
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &.dark {
+      label.darkmode-container {
+          input[type="checkbox"] {
+            &+.planet {
+              --bg-planet-bright: #D7D7D8;
+      
+              &::after {
+ opacity: 1;
+ transform: translate(0.4em, -0.3em);
+              }
+            }
+      
+            &~.elements {
+              transform: rotate(180deg);
+              z-index: 12;
+      
+              svg {
+ transform: translate(0.5em, 1em);
+ opacity: 0;
+
+ &:nth-child(9) {
+   transform: translate(-0.2em, 0.4em);
+   width: 0.2em;
+   height: 0.2em;
+   opacity: 1;
+   circle {
+     fill: var(--bg-planet-lightshadow);
+   }
+ }
+ &:nth-child(10) {
+   transform: translate(-0.35em, 0);
+   width: 0.45em;
+   height: 0.45em;
+   opacity: 1;
+   circle {
+     fill: var(--bg-planet-lightshadow);
+   }
+ }
+ &:nth-child(11) {
+   transform: translate(0, 0.2em);
+   width: 0.25em;
+   height: 0.25em;
+   opacity: 1;
+   circle {
+     fill: var(--bg-planet-lightshadow);
+   }
+ }
+              }
+            }
+          }
+      }
+  }
+}

@@ -1,0 +1,44 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+    <!-- To ensure proper validation, prevent errors, and encourage developers to check, schema's are an opt-in feature. They're very bespoke and requires some customising  -->
+    <!-- Uncomment the code below to enable Structured Data, and test it when you deploy to Netlify - https://developers.google.com/search/docs/appearance/structured-data -->
+    {% include "components/post-schema.njk" %}
+{% endblock %}
+
+{% block body %}
+    {% include "sections/landing.njk" %}
+
+    <article class="~py-16/24 ~px-4/8 bg-white dark:bg-slate-950">
+        <div class="container m-auto flex gap-16">
+            <div class="flex flex-col items-center gap-8 w-full max-w-4xl">
+                <picture>
+                    <img class="w-full aspect-[2/1] object-cover border border-slate-400 dark:border-slate-600 rounded-2xl" src="{{ image }}" alt="{{ imageAlt }}" decoding="async" width="894" height="446" draggable="false">
+                </picture>
+
+                <!-- BLOG POST -->
+                <section class="prose prose-slate dark:prose-invert w-full max-w-[75ch]">
+                    <div class="flex flex-col gap-2">
+                        <!-- BLOG TITLE -->
+                        <h1 class="~text-2xl/4xl mb-0">{{ title }}</h1>
+                        <!-- BLOG METADATA -->
+                        <div class="flex items-center">
+                            <span class="text-sm text-slate-700 dark:text-slate-300 font-medium">{{ author }}</span>
+                            <!-- DIVIDER-->
+                            <svg class="text-slate-700 dark:text-slate-300" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3"/>
+                            </svg>
+                            <span class="text-sm text-slate-700 dark:text-slate-300 font-medium">{{ date | postDate }}</span>
+                        </div>
+                    </div>
+
+                    <!-- BLOG TEXT -->
+                    {{ content | safe }}
+                </section>
+            </div>
+
+            {% include "components/featured-posts.njk" %}
+        </div>
+    </article>
+
+{% endblock %}

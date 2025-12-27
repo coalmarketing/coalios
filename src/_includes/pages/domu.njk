@@ -1,0 +1,421 @@
+{% extends "layouts/base.njk" %}
+
+{% block head %}
+    <!-- Script for Netlify Identity -->
+    <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Netlify Identity configuration -->
+    <script defer src="/assets/js/identity.js"></script>
+
+    <script defer src="/assets/js/basecoat/tabs.js"></script>
+
+    <!-- To ensure proper validation, prevent errors, and encourage developers to check, schema's are an opt-in feature. They're very bespoke and requires some customising  -->
+    <!-- Uncomment the code below to enable Structured Data, and test it when you deploy to Netlify - https://developers.google.com/search/docs/appearance/structured-data -->
+    {% include "components/home-schema.njk" %}
+{% endblock %}
+
+{% block body %}
+    <div class="bg-gradient-to-b from-background-light to-white dark:from-background dark:to-black">
+        <!-- HERO -->
+        <section id="prism-container" class="pt-80 pb-64 ~px-4/8">
+            <div class="relative container m-auto flex flex-col items-center ~gap-10/14 z-10">
+                <!-- HEADING + TEXT -->
+                <div class="flex flex-col items-center ~gap-5/8">
+                    <!-- TOPPER + HEADING -->
+                    <div class="flex flex-col items-center ~gap-4/6">
+                        <!-- TOPPER -->
+                        <div class="flex items-center gap-3 ~py-1.5/2.5 px-4 bg-white/10 dark:bg-black/10 border border-white/25 dark:border-black/25 rounded-full shadow before:h-2 before:w-2 before:bg-primary before:rounded-full">
+                            <span class="font-lekton ~text-lg/xl text-black dark:text-white leading-none">{{ hero.topper }}</span>
+                        </div>
+
+                        <h1 class="~max-w-5xl/7xl font-lekton text-center ~text-2xl/6xl text-black dark:text-white font-bold text-shadow-lg">{{ hero.heading | safe }}</h1>
+                    </div>
+
+                    <p class="~max-w-xl/4xl text-center ~text-base/3xl text-neutral-800 dark:text-neutral-200 text-shadow-md">{{ hero.text }}</p>
+                </div>
+
+                <!-- CTA BUTTONS -->
+                <div class="flex gap-5">
+                    <!-- PRIMARY CTA -->
+                    <a href="{{ hero.ctaPrimary.url }}" class="btn btn-lg">{{ hero.ctaPrimary.text }}</a>
+
+                    <!-- SECONDARY CTA -->
+                    <a href="{{ hero.ctaSecondary.url }}" class="btn btn-lg bg-white">{{ hero.ctaSecondary.text }}</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARTNERS -->
+        <section class="~py-16/24 ~px-4/8">
+            <div class="container m-auto flex flex-col items-center ~gap-6/8 overflow-hidden">
+                <!-- TOPPER + HEADING -->
+                <div class="flex flex-col items-center gap-4">
+                    <span class="topper">{{ partners.topper }}</span>
+                    <h2 class="font-lekton text-center ~text-2xl/4xl text-black dark:text-white font-bold">{{ partners.heading }}</h2>
+                </div>
+
+                <!-- LOGOS -->
+                <div class="relative group py-4">
+                    {% for _ in range(2) %}
+                        <ul class="flex items-center ~gap-16/24 group-hover:[animation-play-state:paused] {% if loop.index === 1 -%} animate-marquee {%- else -%} absolute top-4 left-24 animate-marquee2 {%- endif %}">
+                            {% for item in partners.items %}
+                                <li>
+                                    <a href="{{ item.url }}" target="_blank" class="text-black dark:text-white transition-opacity duration-300 opacity-50 hover:opacity-100 [&>svg]:~h-7/8 [&>svg]:w-auto">
+                                        <span class="sr-only">{{ item.text }}</span>
+
+                                        {% include item.logo %}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="~py-16/24 ~px-4/8">
+            <div class="container m-auto flex flex-col ~gap-12/16">
+                <!-- HEADING + TEXT -->
+                <div class="flex flex-col items-start ~gap-5/6">
+                    <!-- TOPPER + HEADING -->
+                    <div class="flex flex-col items-start gap-4">
+                        <span class="topper">{{ products.topper }}</span>
+                        <h2 class="~max-w-sm/xl font-lekton ~text-3xl/5xl text-black dark:text-white font-bold">{{ products.heading }}</h2>
+                    </div>
+
+                    <p class="max-w-5xl ~text-base/lg text-neutral-800 dark:text-neutral-200">{{ products.text }}</p>
+                </div>
+
+                <!-- ITEMS -->
+                <ul class="group grid grid-cols-1 xl:grid-cols-3 gap-y-12 ~gap-x-4/6" data-spotlight>
+                    {% for item in products.items %}
+                        <li class="flex flex-col ~gap-4/6">
+                            <!-- ICON -->
+                            <img
+                                class="self-start ~h-14/16 w-auto ~ml-6/8"
+                                src="{{ item.icon }}"
+                                alt="{{ item.title }}"
+                                width="138"
+                                height="64"
+                                loading="lazy"
+                                decoding="async"
+                                aria-hidden="true"
+                                draggable="false">
+
+                            <!-- CONTENT -->
+                            <div class="border-gradient p-0.5 rounded-3xl transition-transform duration-300 hover:-translate-y-0.5">
+                                <!-- INNER CONTAINER -->
+                                <div class="flex flex-col gap-5 ~p-6/8 bg-neutral-100 dark:bg-neutral-900 rounded-3xl">
+                                    <!-- TITLE + SUBTITLE -->
+                                    <div class="flex flex-col ~gap-0.5/1.5">
+                                        <h3 class="font-lekton ~text-2xl/3xl text-black dark:text-white font-bold leading-none">{{ item.title }}</h3>
+                                        <span class="text-primary font-bold leading-none">{{ item.subtitle }}</span>
+                                    </div>
+
+                                    <!-- TEXT + CTA -->
+                                    <div class="flex flex-col items-start gap-8">
+                                        <!-- TEXT -->
+                                        <p class="text-neutral-800 dark:text-neutral-200">{{ item.text }}</p>
+
+                                        <a href="{{ item.cta.url }}" class="btn btn-sm">{{ item.cta.text }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- BENEFITS -->
+    <section class="~py-16/24 ~px-4/8 bg-white dark:bg-black">
+        <div class="container m-auto flex flex-col gap-16">
+            <!-- HEADING + TEXT -->
+            <div class="flex flex-col items-center ~gap-5/6">
+                <!-- TOPPER + HEADING -->
+                <div class="flex flex-col items-center gap-4">
+                    <span class="topper text-center">{{ benefits.topper }}</span>
+                    <h2 class="font-lekton text-center ~text-3xl/5xl text-black dark:text-white font-bold">{{ benefits.heading }}</h2>
+                </div>
+
+                <p class="max-w-2xl text-center ~text-base/lg text-neutral-800 dark:text-neutral-200">{{ benefits.text }}</p>
+            </div>
+
+            <!-- ITEMS + CTA -->
+            <div class="flex flex-col items-center gap-8">
+                <!-- ITEMS -->
+                <ul class="group grid grid-cols-2 xl:grid-cols-3 ~gap-4/6" data-spotlight>
+                    {% for item in benefits.items %}
+                        <li class="border-gradient p-0.5 rounded-3xl transition-transform duration-300 hover:-translate-y-0.5">
+                            <!-- INNER CONTAINER -->
+                            <div class="spotlight-card flex flex-col gap-12 h-full p-8 bg-neutral-100 dark:bg-neutral-900 rounded-3xl">
+                                <!-- ICON -->
+                                <img class="h-16 w-16"
+                                    src="{{ item.icon.url }}"
+                                    alt="{{ item.icon.alt }}"
+                                    width="64"
+                                    height="64"
+                                    loading="lazy"
+                                    decoding="async"
+                                    aria-hidden="true"
+                                    draggable="false">
+
+                                <!-- TITLE + TEXT -->
+                                <div class="flex flex-col ~gap-2/3">
+                                    <h3 class="font-lekton ~text-2xl/3xl text-black dark:text-white font-bold leading-none">{{ item.title }}</h3>
+                                    <p class="text-neutral-800 dark:text-neutral-200">{{ item.text }}</p>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <!-- CTA -->
+                <a href="{{ benefits.cta.url }}" class="btn btn-lg">{{ benefits.cta.text }}</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODULES -->
+    <section class="~pt-16/24 ~px-4/8 bg-white dark:bg-black">
+        <div class="container m-auto flex flex-col gap-12">
+            <!-- HEADING + TEXT -->
+            <div class="flex max-lg:flex-col justify-between lg:items-end ~gap-5/6">
+                <!-- TOPPER + HEADING -->
+                <div class="flex flex-col items-start gap-4">
+                    <span class="topper">{{ modules.topper }}</span>
+                    <h2 class="~max-w-sm/lg font-lekton ~text-3xl/5xl text-black dark:text-white font-bold">{{ modules.heading }}</h2>
+                </div>
+
+                <p class="max-w-xl ~text-base/lg text-neutral-800 dark:text-neutral-200">{{ modules.text }}</p>
+            </div>
+
+            <!-- DESKTOP SCREEN -->
+            <div class="border-gradient p-0.5 pb-0 rounded-t-4xl">
+                <!-- INNER CONTAINER -->
+                <div class="flex flex-col bg-neutral-200 dark:bg-neutral-900 rounded-t-4xl">
+                    <!-- TOP BAR -->
+                    <div class="flex justify-center lg:justify-between items-center gap-4 py-3 ~px-6/8 bg-neutral-100 dark:bg-neutral-950 rounded-t-4xl">
+                        <!-- CONTROL BUTTONS -->
+                        <ul class="hidden lg:flex gap-1.5">
+                            {% for _ in range(3) %}
+                                <li class="h-3 w-3 bg-neutral-300 dark:bg-neutral-800 rounded-full transition-colors duration-300 hover:bg-neutral-600 hover:cursor-pointer"></li>
+                            {% endfor %}
+                        </ul>
+
+                        <!-- SEARCH BAR -->
+                        <div class="w-full max-w-[25rem] py-1.5 px-3 bg-neutral-200 dark:bg-neutral-800 text-center text-sm text-neutral-800 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-md select-none">
+                            {% set url = client
+                                .domain
+                                .split("https://") %}
+
+                            <span class="text-neutral-400 dark:text-neutral-500">https://</span><span>{{ url[1] }}</span>
+                        </div>
+
+                        <!-- PLACEHOLDER -->
+                        <div class="hidden lg:block w-12 opacity-0"></div>
+                    </div>
+
+                    <!-- WINDOW -->
+                    <div class="tabs flex max-lg:flex-col gap-4 lg:gap-8 p-6 pb-0">
+                        <!-- TAB NAVIGATION -->
+                        <nav class="lg:pb-4" role="tablist" aria-orientation="horizontal">
+                            <ul class="flex flex-col gap-2">
+                                {% for item in modules.items %}
+                                    <li>
+                                        <button class="group relative flex items-center gap-4 w-full py-4 px-7 text-neutral-600 hover:text-black aria-selected:text-black dark:text-neutral-400 dark:hover:text-white dark:aria-selected:text-white rounded-2xl z-10
+                                        before:absolute before:top-0 before:left-0 before:h-full before:w-full before:bg-neutral-100 dark:before:bg-neutral-800 before:border-2 before:border-neutral-300 dark:before:border-neutral-700 before:rounded-2xl before:-z-10
+                                        before:transition-opacity before:duration-300 before:opacity-0 aria-selected:before:opacity-100"
+                                            type="button"
+                                            role="tab"
+                                            id="{{ item.id }}-tab"
+                                            aria-controls="{{ item.id }}-panel"
+                                            aria-selected="{% if loop.index === 1 -%} true {%- else -%} false {%- endif %}"
+                                            tabindex="0">
+
+                                            <!-- ICON -->
+                                            {% include item.icon %}
+
+                                            <span class="pt-0.5 font-lekton text-lg font-bold">{{ item.label }}</span>
+                                        </button>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+
+                        {% for item in modules.items %}
+                            <!-- TAB PANEL -->
+                            <div class="[&[hidden]]:hidden flex-1 flex max-2xl:flex-col gap-4"
+                                role="tabpanel"
+                                id="{{ item.id }}-panel"
+                                aria-labelledby="{{ item.id }}-tab"
+                                tabindex="-1"
+                                {% if loop.index !== 1 -%} hidden {%- endif %}>
+
+                                <!-- MAIN CONTENT -->
+                                <div class="flex-1 flex flex-col gap-12 ~p-8/12 bg-neutral-100 dark:bg-neutral-800 border-2 2xl:border-b-0 border-neutral-300 dark:border-neutral-700 rounded-3xl 2xl:rounded-b-none">
+                                    <!-- TEXT + SUBITEMS -->
+                                    <div class="flex flex-col gap-8">
+                                        <!-- HEADING + TEXT -->
+                                        <div class="flex flex-col gap-5">
+                                            <!-- TOPPER + HEADING -->
+                                            <div class="flex flex-col items-start gap-4">
+                                                <span class="topper">{{ item.content.topper }}</span>
+                                                <h2 class="font-lekton text-3xl text-black dark:text-white font-bold">{{ item.content.heading }}</h2>
+                                            </div>
+
+                                            <p class="max-w-2xl text-neutral-800 dark:text-neutral-200">{{ item.content.text }}</p>
+                                        </div>
+
+                                        <!-- ITEMS -->
+                                        <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
+                                            {% for subitem in item.content.subitems %}
+                                                <li class="flex items-center gap-3 py-3 px-4 bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 rounded-2xl">
+                                                    <!-- ICON -->
+                                                    <img src="{{ subitem.icon.url }}"
+                                                    alt="{{ subitem.icon.alt }}"
+                                                    width="24"
+                                                    height="24"
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    aria-hidden="true"
+                                                    draggable="false">
+
+                                                    <span class="font-lekton text-sm text-black dark:text-white font-bold">{{ subitem.text }}</span>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+                                    <!-- CTA -->
+                                    <a href="{{ item.content.cta.url }}" class="btn self-start">{{ item.content.cta.text }}</a>
+                                </div>
+
+                                <!-- CARDS -->
+                                <ul class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-1 gap-4 w-full 2xl:max-w-sm 2xl:pb-4">
+                                    {% for card in item.content.cards %}
+                                        <li class="flex flex-col justify-between gap-16 ~p-6/7 bg-neutral-100 dark:bg-neutral-800 border-2 border-neutral-300 dark:border-neutral-700 first:max-md:rounded-b-2xl last:max-md:border-b-0 last:max-md:rounded-b-none rounded-b-none 2xl:rounded-b-3xl rounded-3xl">
+                                            <!-- TITLE + BADGE -->
+                                            <div class="flex justify-between items-center">
+                                                <span class="text-4.5xl text-black dark:text-white font-bold">{{ card.title }}</span>
+                                                <span class="topper">{{ card.badge }}</span>
+                                            </div>
+
+                                            <p class="text-sm text-neutral-800 dark:text-neutral-200">{{ card.text | safe }}</p>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include "sections/cta.njk" %}
+{% endblock body %}
+
+{% block footer %}
+    <div class="bg-gradient-to-b from-white to-background-light dark:from-black dark:to-background">
+        <!-- BLOG POSTS -->
+        <section class="~py-16/24 ~px-4/8">
+            <div class="container m-auto flex flex-col gap-12">
+                <!-- HEADING + CTA -->
+                <div class="flex justify-between items-end">
+                    <!-- TOPPER + HEADING -->
+                    <div class="flex flex-col items-start gap-4">
+                        <span class="topper">{{ blog.topper }}</span>
+                        <h2 class="font-lekton ~text-3xl/5xl text-black dark:text-white font-bold">{{ blog.heading }}</h2>
+                    </div>
+
+                    <a href="{{ blog.cta.url }}" class="max-md:hidden btn btn-lg">{{ blog.cta.text }}</a>
+                </div>
+
+                <!-- BLOG POSTS -->
+                <ul class="grid grid-cols-1 2xl:grid-cols-3 gap-y-12 ~gap-x-4/6">
+                    {% for post in collections.blog | reverse | limit(3) %}
+                        <li class="flex flex-col md:flex-row 2xl:flex-col items-center gap-8 2xl:gap-6">
+                            <!-- POST IMAGE -->
+                            <a href="{{ post.url }}" class="group md:basis-[40%] 2xl:basis-auto rounded-3xl overflow-hidden">
+                                <picture>
+                                    <!-- DESKTOP IMAGE -->
+                                    <source srcset="{% getUrl post.data.image | resize({ width: 744, height: 495 }) | avif %}" type="image/avif">
+                                    <source srcset="{% getUrl post.data.image | resize({ width: 744, height: 495 }) | webp %}" type="image/webp">
+                                    <source srcset="{% getUrl post.data.image | resize({ width: 744, height: 495 }) | jpeg %}" type="image/jpeg">
+                                    <img
+                                        class="object-cover w-full aspect-[3/2] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1"
+                                        src="{% getUrl post.data.image | resize({ width: 744, height: 495 }) | jpeg %}"
+                                        alt="{{ post.data.imageAlt }}"
+                                        width="496"
+                                        height="330"
+                                        loading="lazy"
+                                        decoding="async"
+                                        aria-hidden="true"
+                                        draggable="false">
+                                </picture>
+                            </a>
+
+                            <!-- METADATA + TEXT -->
+                            <div class="md:basis-[60%] 2xl:basis-auto flex flex-col gap-6 2xl:px-6">
+                                <!-- METADATA -->
+                                <ul class="flex gap-2">
+                                    <!-- DATE -->
+                                    <li class="flex items-center gap-2 py-1 px-3 bg-neutral-200 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 font-medium rounded-md [&>svg]:h-5 [&>svg]:w-5">
+                                        <!-- ICON -->
+                                        {% include "src/assets/svgs/blog/calendar_month.svg" %}
+
+                                        <span>{{ post.data.date | postDate }}</span>
+                                    </li>
+
+                                    <!-- TIME TO READ -->
+                                    <li class="flex items-center gap-2 py-1 px-3 bg-neutral-200 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 font-medium rounded-md [&>svg]:h-5 [&>svg]:w-5">
+                                        <!-- ICON -->
+                                        {% include "src/assets/svgs/blog/timer.svg" %}
+
+                                        <span>{{ post.data.readingTime }} min. čtení</span>
+                                    </li>
+                                </ul>
+
+                                <!-- TITLE + TEXT -->
+                                <div class="flex flex-col gap-2">
+                                    <a href="{{ post.url }}">
+                                        <h3 class="font-lekton ~text-2xl/3xl text-black dark:text-white font-bold leading-none line-clamp-2">{{ post.data.title }}</h3>
+                                    </a>
+
+                                    <p class="text-neutral-800 dark:text-neutral-200 line-clamp-2">{{ post.data.description }}</p>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+
+        {% include "sections/contact-form.njk" %}
+        {% include "sections/footer.njk" %}
+    </div>
+{% endblock footer %}
+
+{% block javascript %}
+    <script type="module">
+        import {Prism} from '/assets/js/react-bits/prism.js';
+
+        const container = document.getElementById('prism-container');
+
+        if (container) {
+            const prism = new Prism(container, {
+                animationType: 'rotate', // 'rotate', 'hover', or '3drotate'
+                colors: [
+                    '#5227FF', '#FF9FFC', '#B19EEF'
+                ],
+                height: 4,
+                baseWidth: 5.5,
+                glow: 1,
+                noise: 0.05,
+                suspendWhenOffscreen: true
+            });
+        }
+    </script>
+{% endblock javascript %}

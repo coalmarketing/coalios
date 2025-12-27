@@ -1,0 +1,90 @@
+<!-- CTA -->
+<section class="relative ~py-16/24 ~px-4/8 bg-neutral-100 dark:bg-neutral-950 border-y border-neutral-300 dark:border-neutral-700 overflow-hidden z-10">
+    <div class="container m-auto flex items-center gap-32">
+        <!-- BUBBLES -->
+        <div class="relative flex-1 h-[32rem]">
+            <!-- HELIOS EASY -->
+            <div class="border-gradient absolute top-4 left-0 p-1 rounded-full z-0">
+                <!-- INNER CONTAINER -->
+                <div class="flex justify-center items-center h-[23.5rem] w-[23.5rem] bg-white dark:bg-neutral-900 rounded-full">
+                    <img src="/assets/svgs/products/helios-easy.svg"
+                        alt="Ikona Helios Easy"
+                        width="244"
+                        height="113"
+                        loading="lazy"
+                        decoding="async"
+                        aria-hidden="true"
+                        draggable="false">
+                </div>
+            </div>
+
+            <!-- HELIOS INUVIO -->
+            <div class="border-gradient absolute bottom-0 left-[calc(50%+3rem)] -translate-x-1/2 p-1 rounded-full z-10">
+                <!-- INNER CONTAINER -->
+                <div class="flex justify-center items-center h-[19.5rem] w-[19.5rem] bg-white dark:bg-neutral-900 rounded-full">
+                    <img src="/assets/svgs/products/helios-inuvio.svg"
+                        alt="Ikona Helios Inuvio"
+                        width="200"
+                        height="87"
+                        loading="lazy"
+                        decoding="async"
+                        aria-hidden="true"
+                        draggable="false">
+                </div>
+            </div>
+
+            <!-- COALSHOP KONEKTOR -->
+            <div class="border-gradient absolute top-0 left-1/2 p-1 rounded-full z-10">
+                <!-- INNER CONTAINER -->
+                <div class="flex justify-center items-center h-[15.5rem] w-[15.5rem] bg-white dark:bg-neutral-900 rounded-full">
+                    <img src="/assets/svgs/products/coalshop-konektor.svg"
+                        alt="Ikona coalshop konektor"
+                        width="184"
+                        height="60"
+                        loading="lazy"
+                        decoding="async"
+                        aria-hidden="true"
+                        draggable="false">
+                </div>
+            </div>
+        </div>
+
+        <!-- TEXT + CTA -->
+        <div class="flex flex-col items-start gap-8">
+            <!-- HEADING + TEXT -->
+            <div class="flex flex-col gap-7">
+                <!-- TOPPER + HEADING -->
+                <div class="flex flex-col items-start gap-5">
+                    <!-- TOPPER -->
+                    <div class="border-gradient p-0.5 rounded-full">
+                        <div class="flex items-center gap-3 py-2.5 px-4 bg-white dark:bg-neutral-900 rounded-full before:h-2 before:w-2 before:bg-primary before:rounded-full">
+                            <span class="font-lekton text-xl text-black dark:text-white leading-none">{{ hero.topper }}</span>
+                        </div>
+                    </div>
+
+                    <h2 class="max-w-xl font-lekton text-6xl text-black dark:text-white font-bold">{{ cta.heading }}</h2>
+                </div>
+
+                <p class="max-w-[44rem] text-2xl text-neutral-800 dark:text-neutral-200">{{ cta.text }}</p>
+            </div>
+
+            <!-- CTA -->
+            <a href="{{ cta.cta.url }}" class="btn btn-lg">{{ cta.cta.text }}</a>
+        </div>
+    </div>
+
+    <!-- STAR ANIMATION -->
+    <div class="absolute top-0 left-0 h-full w-full -z-10">
+        {% for _ in range(2) %}
+            <div class="{% if loop.index === 1 -%} animate-vertical-marquee {%- else -%} absolute top-0 left-0 h-auto w-full animate-vertical-marquee2 {%- endif %}">
+                <div class="block dark:hidden">
+                    {% include "src/assets/svgs/cta/stars-black.svg" %}
+                </div>
+
+                <div class="hidden dark:block">
+                    {% include "src/assets/svgs/cta/stars-white.svg" %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

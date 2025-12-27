@@ -1,0 +1,20 @@
+<!-- FEATURED POSTS -->
+<aside class="hidden lg:flex flex-col gap-8">
+    <div class="flex items-center gap-4 p-4 bg-slate-200 dark:bg-slate-800 border border-slate-400 dark:border-slate-600 rounded-2xl">
+        <div class="p-2 bg-rose-600 rounded-lg">
+            <img src="/assets/svgs/blog/pin-angle.svg" alt="Ikona špendlíku" decoding="async" loading="lazy" width="24" height="24" draggable="false">
+          </div>
+        <h2 class="dark:text-white text-xl font-medium">Připnuté příspevky</h2>
+    </div>
+    {%- for post in collections.featured | reverse -%}
+    <div class="flex flex-col items-center gap-4 w-full max-w-sm">
+        <picture>
+            <img class="w-full aspect-[2/1] object-cover border border-slate-400 dark:border-slate-600 rounded-2xl" src="{{ post.data.image }}" alt="{{ post.data.imageAlt }}" decoding="async" width="382" height="190" draggable="false">
+        </picture>
+        <!-- BLOG TITLE -->
+        <a class="px-4" href="{{ post.url }}">
+            <h3 class="text-lg dark:text-white font-semibold">{{ post.data.title }}</h3>
+        </a>
+    </div>
+    {%- endfor -%}
+</aside>

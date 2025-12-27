@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!-- Favicons -->
+        <link rel="icon" type="image/png" href="/assets/favicons/favicon-96x96.png" sizes="96x96"/>
+        <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg"/>
+        <link rel="shortcut icon" href="/assets/favicons/favicon.ico"/>
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png"/>
+        <link rel="manifest" href="/assets/favicons/site.webmanifest"/>
+
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+        <script>
+            if (window.netlifyIdentity) {
+                window
+                    .netlifyIdentity
+                    .on('logout', () => {
+                        document.location.href = '/admin/';
+                    });
+
+                window
+                    .netlifyIdentity
+                    .setLocale('cs');
+            }
+        </script>
+
+        <title>Správa obsahu</title>
+    </head>
+    <body>
+        <!-- Include the script that builds the page and powers Decap CMS -->
+        <script src="https://unpkg.com/decap-cms@^3.8.3/dist/decap-cms.js"></script>
+
+        <!-- Documentation: https://decapcms.org/docs/customization/ -->
+        <script>
+            // Register the styles for the "blog" collection
+            CMS.registerPreviewStyle("/admin/decap-preview-styles.css");
+        </script>
+    </body>
+</html>

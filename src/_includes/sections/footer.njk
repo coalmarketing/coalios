@@ -1,0 +1,134 @@
+<!-- FOOTER -->
+<footer class="~py-16/24 ~px-4/8">
+    <div class="container m-auto border-gradient p-0.5 rounded-4xl">
+        <!-- INNER CONTAINER -->
+        <div class="flex flex-col gap-16 ~pt-12/16 pb-12 ~px-8/20 bg-neutral-100 dark:bg-neutral-900 rounded-4xl">
+            <!-- TOP ROW -->
+            <div class="flex max-xl:flex-col xl:justify-between xl:items-start ~gap-8/12">
+                <!-- LOGO + NEWSLETTER + SOCIALS -->
+                <div class="flex flex-col items-start gap-8">
+                    <!-- LOGO + SLOGAN -->
+                    <div class="flex flex-col items-start ~gap-4/5">
+                        <img
+                            class="block dark:hidden ~h-9/10 w-auto"
+                            src="/assets/svgs/coalios_logo-black.svg"
+                            alt="coalios logo"
+                            width="206"
+                            height="40"
+                            loading="lazy"
+                            decoding="async"
+                            aria-hidden="true"
+                            draggable="false">
+
+                        <img
+                            class="hidden dark:block ~h-9/10 w-auto"
+                            src="/assets/svgs/coalios_logo-white.svg"
+                            alt="coalios logo"
+                            width="206"
+                            height="40"
+                            loading="lazy"
+                            decoding="async"
+                            aria-hidden="true"
+                            draggable="false">
+
+                        <p class="text-neutral-800 dark:text-neutral-200">{{ footer.slogan }}</p>
+                    </div>
+
+                    <!-- NEWSLETTER -->
+                    <form method="POST" class="flex items-end gap-1">
+                        <label class="flex flex-col items-start gap-3">
+                            <span class="font-lekton text-black dark:text-white font-bold">{{ footer.newsletter }}</span>
+                            <input type="email" placeholder="Email" autocomplete="email" class="input" required>
+                        </label>
+
+                        <button type="submit" class="flex justify-center items-center h-[2.375rem] aspect-square bg-primary rounded-full">
+                            <span class="sr-only">{{ footer.send }}</span>
+
+                            <img
+                                src="/assets/svgs/footer/arrow_outward.svg"
+                                alt="Ikona šipky směřující nahoru"
+                                width="20"
+                                height="20"
+                                loading="lazy"
+                                decoding="async"
+                                aria-hidden="true"
+                                draggable="false">
+                        </button>
+                    </form>
+
+                    <!-- SOCIALS -->
+                    <ul class="flex gap-2">
+                        {% for item in footer.socials %}
+                            <li>
+                                <a href="{{ item.url }}" target="{{ item.target }}" class="text-neutral-600 dark:text-neutral-400 [&>svg]:h-5 [&>svg]:w-5 transition-colors duration-300 hover:text-black dark:hover:text-white">
+                                    <span class="sr-only">{{ item.text }}</span>
+
+                                    {% include item.icon %}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- NAVIGATION + CONTACTS -->
+                <div class="flex max-xl:flex-col-reverse ~gap-y-8/12 ~gap-x-16/28">
+                    <!-- NAVIGATION + LINKS -->
+                    <div class="flex ~gap-16/28">
+                        <!-- NAVIGATION -->
+                        <div class="flex flex-col gap-3">
+                            <span class="font-lekton text-black dark:text-white font-bold">{{ footer.navigation.title }}</span>
+
+                            <!-- ITEMS -->
+                            <ul class="flex flex-col gap-3">
+                                {% for item in footer.navigation.items %}
+                                    <li>
+                                        <a href="{{ item.url }}" class="inline-block py-1 text-sm text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white hover:underline">{{ item.text }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- LINKS -->
+                        <div class="flex flex-col gap-3">
+                            <span class="font-lekton text-black dark:text-white font-bold">{{ footer.links.title }}</span>
+
+                            <!-- ITEMS -->
+                            <ul class="flex flex-col gap-3">
+                                {% for item in footer.links.items %}
+                                    <li>
+                                        <a href="{{ item.url }}" class="inline-block py-1 text-sm text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white hover:underline">{{ item.text }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- CONTACTS -->
+                    <div class="flex flex-col sm:flex-row xl:flex-col ~gap-6/8 sm:gap-16 xl:gap-8">
+                        {% for item in footer.contacts %}
+                            <div class="flex flex-col items-start ~gap-1/1.5">
+                                <span class="font-lekton text-black dark:text-white font-bold">{{ item.title }}</span>
+                                <a href="{{ item.url }}" target="{{ item.target }}" class="inline-block pt-1 text-sm text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white hover:underline">
+                                    {{ item.text | safe }}
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- COPYRIGHT + CREDITS -->
+            <div class="flex flex-col gap-6">
+                <!-- DIVIDER -->
+                <div class="h-px bg-neutral-300 dark:bg-neutral-700"></div>
+
+                <!-- COPYRIGHT + CREDITS -->
+                <p class="text-center text-xs text-neutral-600 dark:text-neutral-400">
+                    © {% year %}
+                    {{ footer.copyright }}, {{ footer.credits }}
+                    <a href="https://coalmarketing.cz/" target="_blank" class="underline hover:text-neutral-800 dark:hover:text-neutral-200">coalmarketing.cz</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

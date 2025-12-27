@@ -1,0 +1,60 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+# Change url to a link to the image you want to use, no file paths, must be a URL
+logo:
+  src: "https://www.senoweb.cz/assets/images/senoweb_og_logo_rounded.png"
+  show_in_header: false
+
+locale: "cs"
+
+# Where should uploaded files be saved
+media_folder: "src/assets/images/cms"
+
+# Where should media be served, relative to the base of the built site
+public_folder: "/assets/images/cms"
+
+collections:
+  # BLOG CONFIG
+  - label: "Blog"
+    name: "blog"
+    folder: "src/content/cms/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    fields:
+      - { label: "Název", name: "title", widget: "string" }
+      - {
+          label: "URL odkaz",
+          name: "url",
+          widget: "string",
+          hint: "Určete, kam bude stránka zapsána. Pokud použijete „prvni-blogovy-prispevek“, bude příspěvek přístupný z „blog/prvni-blogovy-prispevek“. URL odkaz musí být jedinečný.",
+          pattern:
+            [
+              "^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$",
+              "Pouze písmena (A-Z, a-z), číslice a pomlčky (-). Žádná lomítka ani speciální znaky.",
+            ],
+        }
+      - {
+          label: "Popis",
+          name: "description",
+          widget: "string",
+          hint: "Kratší popis blogového příspěvku, který se zobrazuje na náhledech příspěvků",
+        }
+      - { label: "Datum", name: "date", widget: "datetime" }
+      - {
+          label: "Náhledový obrázek",
+          name: "image",
+          widget: "image",
+          choose_url: false, # Only allow local images - for image optimization reasons
+        }
+      - {
+          label: "Popis obrázku",
+          name: "imageAlt",
+          widget: "string",
+          hint: "Popište, co je na obrázku. Slouží k validnímu SEO příspěvku.",
+        }
+      - { label: "Obsah", name: "body", widget: "markdown" }
+      - { label: "Štítky", name: "tags", widget: "hidden", default: ["blog"] }

@@ -1,0 +1,177 @@
+<!-- TOP BAR + HEADER -->
+<div class="fixed flex flex-col gap-4 w-full z-50">
+
+  <!-- TOP BAR -->
+  <div class="relative py-3 ~px-4/8 bg-background z-20 transition-[transform,_height] duration-300 group-[.scroll]/body:-translate-y-full">
+    <ul class="container m-auto flex justify-end gap-4">
+      {% for item in topBar.items %}
+        <li class="group relative">
+          <a href="{{ item.url }}"
+            target="{{ item.target }}"
+            class="{% if item.url.includes(client.domain) -%} text-primary {%- else -%} text-white transition-opacity duration-300 opacity-50 hover:opacity-100 {%- endif %}">
+            {% include item.icon %}
+          </a>
+
+          <!-- TOOLTIP -->
+          <div class="absolute top-[calc(100%+1rem)] left-1/2 -translate-x-1/2 py-1 px-3 bg-neutral-900 text-center text-xs text-neutral-200 border border-neutral-700 rounded-full z-50 transition-[transform,_opacity] duration-300 -translate-y-full group-hover:translate-y-0 opacity-0 group-hover:opacity-100
+          before:absolute before:top-0 before:-translate-y-1/2 before:left-1/2 before:-translate-x-1/2 before:h-2 before:w-2 before:bg-neutral-900 before:border-t before:border-l before:border-neutral-700 before:rotate-45 before:-z-10">
+            {{ item.text }}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- HEADER -->
+  <div class="~px-4/8 transition-[background-color,_transform] duration-300 group-[.scroll]/body:bg-white/90 dark:group-[.scroll]/body:bg-black/90 group-[.scroll]/body:-translate-y-[4.25rem]">
+    <header class="container m-auto py-4 ~pl-8/12 ~pr-4/8 bg-white/50 dark:bg-black/50 border border-white/30 dark:border-black/30 shadow rounded-full transition-[background-color,_max-width,_border-width,_border-radius] duration-300 group-[.scroll]/body:bg-transparent group-[.scroll]/body:max-w-full group-[.scroll]/body:border-0 group-[.scroll]/body:border-b group-[.scroll]/body:rounded-none">
+      <div class="container m-auto flex justify-between items-center gap-8">
+        <!-- LOGO -->
+        <a href="/">
+          <span class="sr-only">Zpět na domovskou stránku</span>
+
+          <!-- BLACK LOGO -->
+          <img
+            class="block dark:hidden h-8 w-auto"
+            src="/assets/svgs/coalios_logo-black.svg"
+            alt="coalios logo"
+            width="165"
+            height="32"
+            loading="lazy"
+            decoding="async"
+            aria-hidden="true"
+            draggable="false">
+
+          <!-- WHITE LOGO -->
+          <img
+            class="hidden dark:block h-8 w-auto"
+            src="/assets/svgs/coalios_logo-white.svg"
+            alt="coalios logo"
+            width="165"
+            height="32"
+            loading="lazy"
+            decoding="async"
+            aria-hidden="true"
+            draggable="false">
+        </a>
+
+        <!-- NAVIGATION -->
+        <nav class="max-lg:hidden max-lg:group-[.mobile-menu]/body:block max-lg:absolute max-lg:top-[calc(100%+0.5rem)] max-lg:left-1/2 max-lg:-translate-x-1/2 max-lg:w-[calc(100vw-2rem)] max-lg:p-4 max-lg:bg-black max-lg:rounded-lg">
+          <ul class="flex max-lg:flex-col ~gap-2/8">
+            {% set navPages = collections.all | eleventyNavigation %}
+
+            {# Loop through all pages with a eleventyNavigation in the frontmatter #}
+            {% for entry in navPages %}
+
+              {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
+              {% set hasChild = entry.children.length %}
+
+              <li
+                class="group/li inline-flex {% if hasChild -%} dropdown {%- endif %}"
+                {%- if hasChild -%}tabindex="0"{%- endif -%}
+              >
+
+                {# If the page has child dropdown pages, render it as a <button> tag with the appropriate dropdown HTML #}
+                {% if hasChild %}
+                  {# Render the <button> with the active class, dropdown icon and child links #}
+                  <button
+                    class="dropdown-button"
+                    aria-expanded="false"
+                    aria-controls="dropdown-{{ entry.key | slug }}"
+                    aria-label="dropdown-{{ entry.key | slug }}"
+                    type="button"
+                  >
+                    <span>{{ entry.key }}</span>
+
+                    <!-- ICON -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="mt-0.5" viewBox="0 0 16 16">
+                      <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                    </svg>
+                  </button>
+
+                  {# Dropdowns have another ul/li set up within the parent li, which gets rendered in the same way as a normal link #}
+                  <div>
+                    <ul id="dropdown-{{ entry.key | slug }}">
+                      {% for child in entry.children %}
+                        <li class="drop-li">
+                          <a href="{{ child.url }}"
+                            class="li-link inline-flex whitespace-nowrap ~p-1.5/4 ~text-sm/base
+                            {%- if child.url == page.url %} text-white
+                            {%- else %} text-gray-200 hover:text-white{% endif %}"
+                            {%- if child.url == page.url -%}aria-current="page"{%- endif -%}
+                          >
+                            {{ child.key }}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% else %}
+                  {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
+                  <a class="w-full ~p-1.5/4 whitespace-nowrap transition-colors duration-300
+                    {%- if entry.url == page.url %} text-black dark:text-white font-semibold
+                    {%- else %} text-neutral-800 hover:text-black dark:text-neutral-200 dark:hover:text-white{% endif %}"
+                    href="{{ entry.url }}"
+                    {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
+                    {{ entry.key }}
+                  </a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+
+        <!-- DARKMODE + CTA -->
+        <div class="flex items-center gap-2.5">
+          <!-- DARKMODE SWITCH -->
+          <label class="darkmode-container relative h-8 w-8 hover:cursor-pointer" for="dark-mode-toggle">
+            <span class="sr-only">Přepínač tmavého režimu</span>
+            <input id="dark-mode-toggle" type="checkbox">
+
+            <!-- LIGHTMODE -->
+            <img
+              class="absolute top-1/2 left-1/2 -translate-y-1/2 transition-[transform,_opacity] duration-300 -translate-x-1/2 opacity-100 dark:-translate-y-6 dark:opacity-0"
+              src="/assets/svgs/header/light_mode.svg"
+              alt="Ikona měsíce"
+              width="24"
+              height="24"
+              loading="eager"
+              decoding="async"
+              aria-hidden="true"
+              draggable="false">
+
+            <!-- LIGHTMODE -->
+            <img
+              class="absolute top-1/2 left-1/2 translate-y-6 -translate-x-1/2 transition-[transform,_opacity,_color] duration-300 opacity-0 dark:-translate-y-1/2 dark:opacity-100"
+              src="/assets/svgs/header/dark_mode.svg"
+              alt="Ikona měsíce"
+              width="24"
+              height="24"
+              loading="eager"
+              decoding="async"
+              aria-hidden="true"
+              draggable="false">
+          </label>
+
+          <!-- CTA -->
+          <a href="/kontakt" class="btn">Napište nám</a>
+
+          <!-- MOBILE MENU BUTTON -->
+          <button
+            id="mobile-menu-toggle"
+            class="group lg:hidden flex justify-center items-center gap-1 h-11 w-11 bg-secondary rounded-xl transition-transform duration-300 [&.active]:rotate-90"
+            type="button"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Otevřít navigaci</span>
+            <span class="relative block h-3.5 w-5">
+              <span class="absolute top-0 block h-0.5 w-full bg-white rounded-full transition-transform duration-300 group-[.active]:rotate-45 group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
+              <span class="absolute top-1/2 -translate-y-1/2 block h-0.5 w-full bg-white rounded-full transition-[opacity] duration-300 group-[.active]:opacity-0"></span>
+              <span class="absolute bottom-0 block h-0.5 w-full bg-white rounded-full transition-transform duration-300 group-[.active]:rotate-[315deg] group-[.active]:top-1/2 group-[.active]:-translate-y-1/2 group-[.active]:left-1/2 group-[.active]:-translate-x-1/2"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>

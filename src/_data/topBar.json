@@ -1,0 +1,34 @@
+{
+    "items": [
+        {
+            "url": "https://coalsoft.cz/",
+            "target": "_blank",
+            "icon": "src/assets/svgs/coalfamily/coalsoft_icon.svg",
+            "text": "coalsoft"
+        },
+        {
+            "url": "https://coalios.cz/",
+            "target": "_self",
+            "icon": "src/assets/svgs/coalfamily/coalios_icon.svg",
+            "text": "coalios"
+        },
+        {
+            "url": "https://coaledu.cz/",
+            "target": "_blank",
+            "icon": "src/assets/svgs/coalfamily/coaledu_icon.svg",
+            "text": "coaledu"
+        },
+        {
+            "url": "https://coalmarketing.cz/",
+            "target": "_blank",
+            "icon": "src/assets/svgs/coalfamily/coalmarketing_icon.svg",
+            "text": "coalmarketing"
+        },
+        {
+            "url": "https://coalfamily.cz/",
+            "target": "_blank",
+            "icon": "src/assets/svgs/coalfamily/coalfamily_icon.svg",
+            "text": "coalfamily"
+        }
+    ]
+}

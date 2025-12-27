@@ -1,0 +1,69 @@
+<!-- A fully fleshed-out <head>, dynamically changing based on client.json and the page front matter -->
+
+<!DOCTYPE html>
+<html lang="cs" class="scroll-smooth">
+
+  <head>
+    <!-- Standard meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ description }}">
+    <meta name="generator" content="{{ eleventy.generator }}">
+    <link rel="canonical" href="{{ client.domain }}{{ page.url }}">
+
+    <!-- Social Media Display -->
+    <meta property="og:title" content="{{ title }}"/>
+    <meta property="og:description" content="{{ description }}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ client.domain }}{{ page.url }}"/>
+    <meta property="og:image" content="{{ image or "/assets/images/og-logo.png" }}"/>
+    <meta property="og:image:secure_url" content="{{ image or "/assets/images/og-logo.png" }}"/>
+    <meta property="og:locale" content="cs_CZ">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="/assets/favicons/favicon-96x96.png" sizes="96x96"/>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg"/>
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png"/>
+    <meta name="apple-mobile-web-app-title" content="{{ client.name }}"/>
+    <link rel="manifest" href="/assets/favicons/site.webmanifest"/>
+
+    <!-- Preloads -->
+    <link rel="preload" as="image" href="/assets/svgs/coalios_logo-white.svg">
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-v20-latin-ext-regular.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-v20-latin-ext-600.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/lekton-v21-latin-ext-regular.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/lekton-v21-latin-ext-700.woff2" crossorigin>
+
+    <!-- Sitewide Stylesheets and Scripts -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/basecoat.css">
+    <script defer src="/assets/js/nav.js"></script>
+    <script defer src="/assets/js/dark.js"></script>
+    <script defer src="/assets/js/react-bits/magic-bento.js"></script>
+    <script defer src="/assets/js/basecoat/basecoat.js"></script>
+
+    {% block head %}{% endblock %}
+
+    <title>{{ title }} | {{ client.name }}</title>
+  </head>
+
+  <body class="group/body{% if page.url == '/' %} home{% else %} interior{% endif %}">
+    <!-- Screen reader skip main nav -->
+    <a class="sr-only" aria-label="Kliknutím přeskočíte na hlavní obsah" href="#main">Kliknutím přeskočíte na hlavní obsah</a>
+
+    {% include "sections/header.njk" %}
+
+    <main id="main">
+      {% block body %}{% endblock %}
+    </main>
+
+    {% block footer %}
+      {% include "sections/footer.njk" %}
+    {% endblock %}
+
+    {% block javascript %}{% endblock %}
+  </body>
+
+</html>

@@ -1,0 +1,105 @@
+{
+    "slogan": "Technologie, které posouvají firmy dál.",
+    "newsletter": "Odběr novinek",
+    "send": "Odeslat",
+    "socials": [
+        {
+            "url": "https://www.facebook.com/coalfamily",
+            "target": "_blank",
+            "icon": "src/assets/svgs/footer/facebook.svg",
+            "text": "Facebook coalfamily"
+        },
+        {
+            "url": "https://www.instagram.com/coalfamily_/",
+            "target": "_blank",
+            "icon": "src/assets/svgs/footer/instagram.svg",
+            "text": "Instagram coalfamily"
+        },
+        {
+            "url": "https://www.linkedin.com/company/coalios/",
+            "target": "_blank",
+            "icon": "src/assets/svgs/footer/linkedin.svg",
+            "text": "Instagram coalios"
+        }
+    ],
+    "navigation": {
+        "title": "Navigace",
+        "items": [
+            {
+                "url": "/",
+                "text": "Domů"
+            },
+            {
+                "url": "/o-nas",
+                "text": "O nás"
+            },
+            {
+                "url": "/produkty/helios-easy",
+                "text": "Helios Easy"
+            },
+            {
+                "url": "/produkty/helios-inuvio",
+                "text": "Helios Inuvio"
+            },
+            {
+                "url": "/produkty/coalshop-konektor",
+                "text": "coalshop konektor"
+            },
+            {
+                "url": "/kontakt",
+                "text": "Kontakt"
+            }
+        ]
+    },
+    "links": {
+        "title": "Užitečné odkazy",
+        "items": [
+            {
+                "url": "/news",
+                "text": "Novinky"
+            },
+            {
+                "url": "/kariera",
+                "text": "Kariéra"
+            },
+            {
+                "url": "/pro-firmy",
+                "text": "Pro firmy"
+            },
+            {
+                "url": "/pro-media",
+                "text": "Pro média"
+            },
+            {
+                "url": "/gdpr",
+                "text": "GDPR"
+            },
+            {
+                "url": "/sitemap.xml",
+                "text": "Sitemap"
+            }
+        ]
+    },
+    "contacts": [
+        {
+            "title": "Kancelář",
+            "url": "https://maps.app.goo.gl/9ohZ2t39WcibtzYNA",
+            "target": "_blank",
+            "text": "U Stadionu 923,<br>561 51 Letohrad"
+        },
+        {
+            "title": "Email",
+            "url": "mailto:info@coalios.cz",
+            "target": "_self",
+            "text": "info@coalios.cz"
+        },
+        {
+            "title": "Telefon",
+            "url": "tel:+420602150900",
+            "target": "_self",
+            "text": "+420 602 150 900"
+        }
+    ],
+    "copyright": "Všechna práva vyhrazena",
+    "credits": "Developed with 💜 by"
+}

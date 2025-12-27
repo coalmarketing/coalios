@@ -1,0 +1,65 @@
+{
+    "topper": "Kontaktujte nás",
+    "heading": "Pojďme společně zlepšit řízení vaší firmy",
+    "title": "Ať řešíte nový ERP systém nebo jen vylepšení stávajícího řešení.",
+    "text": "Jste připraveni probrat váš projekt? Vyplňte formulář a společně najdeme nejlepší řešení.",
+    "socials": [
+        {
+            "url": "https://www.facebook.com/coalfamily",
+            "target": "_blank",
+            "icon": "src/assets/svgs/footer/facebook.svg",
+            "text": "Facebook coalfamily"
+        },
+        {
+            "url": "https://www.instagram.com/coalfamily_/",
+            "target": "_blank",
+            "icon": "src/assets/svgs/footer/instagram.svg",
+            "text": "Instagram coalfamily"
+        },
+        {
+            "url": "https://www.linkedin.com/company/coalios/",
+            "target": "_blank",
+            "icon": "src/assets/svgs/footer/linkedin.svg",
+            "text": "Instagram coalios"
+        }
+    ],
+    "form": {
+        "fields": [
+            {
+                "label": "Jméno",
+                "type": "text",
+                "name": "Jméno",
+                "autocomplete": "given-name",
+                "required": true
+            },
+            {
+                "label": "Příjmení",
+                "type": "text",
+                "name": "Příjmení",
+                "autocomplete": "family-name",
+                "required": true
+            },
+            {
+                "label": "Email",
+                "type": "email",
+                "name": "Email",
+                "autocomplete": "email",
+                "required": true
+            },
+            {
+                "label": "Telefon",
+                "type": "tel",
+                "name": "Telefon",
+                "autocomplete": "tel",
+                "required": false
+            },
+            {
+                "label": "Zpráva",
+                "type": "textarea",
+                "name": "Zpráva",
+                "required": true
+            }
+        ],
+        "send": "Odeslat"
+    }
+}

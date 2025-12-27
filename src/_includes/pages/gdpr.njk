@@ -1,0 +1,32 @@
+{% extends "layouts/base.njk" %}
+
+{% block body %}
+    {% include "sections/landing.njk" %}
+
+    <!-- GDPR -->
+    <section class="~py-16/24 ~px-4/8">
+        <div class="container m-auto">
+            <div class="max-w-[75ch]">
+                {% for item in contentOne.items %}
+                    <div class="mb-6">
+                        {% if item.heading %}
+                            <h3 class="dark:text-white ~text-xl/2xl font-semibold mb-4">{{ item.heading }}</h3>
+                        {% endif -%}
+
+                        {%- if item.text %}
+                            <p class="~text-sm/base text-gray-800 dark:text-gray-200 mb-2">{{ item.text }}</p>
+                        {% endif -%}
+
+                        {%- if item.subitems %}
+                            <ul class="list-disc max-w-2xl space-y-1 ml-8">
+                                {% for subitem in item.subitems %}
+                                    <li class="font-work-sans text-gray-800 dark:text-gray-200">{{ subitem.text }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock body %}
