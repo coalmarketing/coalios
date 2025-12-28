@@ -34,7 +34,7 @@
                 </div>
 
                 <!-- CTA BUTTONS -->
-                <div class="flex gap-5">
+                <div class="flex max-sm:flex-col gap-y-2 ~gap-x-3/5">
                     <!-- PRIMARY CTA -->
                     <a href="{{ hero.ctaPrimary.url }}" class="btn btn-lg">{{ hero.ctaPrimary.text }}</a>
 
@@ -56,10 +56,10 @@
                 <!-- LOGOS -->
                 <div class="relative group py-4">
                     {% for _ in range(2) %}
-                        <ul class="flex items-center ~gap-16/24 group-hover:[animation-play-state:paused] {% if loop.index === 1 -%} animate-marquee {%- else -%} absolute top-4 left-24 animate-marquee2 {%- endif %}">
+                        <ul class="flex items-center ~gap-12/24 group-hover:[animation-play-state:paused] {% if loop.index === 1 -%} animate-marquee {%- else -%} absolute top-4 ~left-12/24 animate-marquee2 {%- endif %}">
                             {% for item in partners.items %}
                                 <li>
-                                    <a href="{{ item.url }}" target="_blank" class="text-black dark:text-white transition-opacity duration-300 opacity-50 hover:opacity-100 [&>svg]:~h-7/8 [&>svg]:w-auto">
+                                    <a href="{{ item.url }}" target="_blank" class="text-black dark:text-white transition-opacity duration-300 opacity-50 hover:opacity-100 [&>svg]:~h-6/8 [&>svg]:w-auto">
                                         <span class="sr-only">{{ item.text }}</span>
 
                                         {% include item.logo %}
@@ -76,7 +76,7 @@
         <section class="~py-16/24 ~px-4/8">
             <div class="container m-auto flex flex-col ~gap-12/16">
                 <!-- HEADING + TEXT -->
-                <div class="flex flex-col items-start ~gap-5/6">
+                <div class="flex flex-col items-start ~gap-4/6">
                     <!-- TOPPER + HEADING -->
                     <div class="flex flex-col items-start gap-4">
                         <span class="topper">{{ products.topper }}</span>
@@ -130,28 +130,28 @@
 
     <!-- BENEFITS -->
     <section class="~py-16/24 ~px-4/8 bg-white dark:bg-black">
-        <div class="container m-auto flex flex-col gap-16">
+        <div class="container m-auto flex flex-col ~gap-12/16">
             <!-- HEADING + TEXT -->
-            <div class="flex flex-col items-center ~gap-5/6">
+            <div class="flex flex-col items-start sm:items-center ~gap-4/6">
                 <!-- TOPPER + HEADING -->
-                <div class="flex flex-col items-center gap-4">
-                    <span class="topper text-center">{{ benefits.topper }}</span>
-                    <h2 class="font-lekton text-center ~text-3xl/5xl text-black dark:text-white font-bold">{{ benefits.heading }}</h2>
+                <div class="flex flex-col items-start sm:items-center gap-4">
+                    <span class="topper text-left sm:text-center">{{ benefits.topper }}</span>
+                    <h2 class="font-lekton text-left sm:text-center ~text-3xl/5xl text-black dark:text-white font-bold">{{ benefits.heading }}</h2>
                 </div>
 
-                <p class="max-w-2xl text-center ~text-base/lg text-neutral-800 dark:text-neutral-200">{{ benefits.text }}</p>
+                <p class="max-w-2xl text-left sm:text-center ~text-base/lg text-neutral-800 dark:text-neutral-200">{{ benefits.text }}</p>
             </div>
 
             <!-- ITEMS + CTA -->
             <div class="flex flex-col items-center gap-8">
                 <!-- ITEMS -->
-                <ul class="group grid grid-cols-2 xl:grid-cols-3 ~gap-4/6" data-spotlight>
+                <ul class="group grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ~gap-4/6" data-spotlight>
                     {% for item in benefits.items %}
                         <li class="border-gradient p-0.5 rounded-3xl transition-transform duration-300 hover:-translate-y-0.5">
                             <!-- INNER CONTAINER -->
-                            <div class="spotlight-card flex flex-col gap-12 h-full p-8 bg-neutral-100 dark:bg-neutral-900 rounded-3xl">
+                            <div class="spotlight-card flex flex-col ~gap-10/12 h-full ~p-6/8 bg-neutral-100 dark:bg-neutral-900 rounded-3xl">
                                 <!-- ICON -->
-                                <img class="h-16 w-16"
+                                <img class="~h-12/16 ~w-12/16"
                                     src="{{ item.icon.url }}"
                                     alt="{{ item.icon.alt }}"
                                     width="64"
@@ -179,9 +179,9 @@
 
     <!-- MODULES -->
     <section class="~pt-16/24 ~px-4/8 bg-white dark:bg-black">
-        <div class="container m-auto flex flex-col gap-12">
+        <div class="container m-auto flex flex-col ~gap-8/12">
             <!-- HEADING + TEXT -->
-            <div class="flex max-lg:flex-col justify-between lg:items-end ~gap-5/6">
+            <div class="flex max-lg:flex-col justify-between lg:items-end ~gap-4/6">
                 <!-- TOPPER + HEADING -->
                 <div class="flex flex-col items-start gap-4">
                     <span class="topper">{{ modules.topper }}</span>
@@ -218,13 +218,13 @@
                     </div>
 
                     <!-- WINDOW -->
-                    <div class="tabs flex max-lg:flex-col gap-4 lg:gap-8 p-6 pb-0">
+                    <div class="tabs flex max-lg:flex-col ~gap-2/4 lg:gap-8 ~pt-4/6 ~px-2/6">
                         <!-- TAB NAVIGATION -->
                         <nav class="lg:pb-4" role="tablist" aria-orientation="horizontal">
                             <ul class="flex flex-col gap-2">
                                 {% for item in modules.items %}
                                     <li>
-                                        <button class="group relative flex items-center gap-4 w-full py-4 px-7 text-neutral-600 hover:text-black aria-selected:text-black dark:text-neutral-400 dark:hover:text-white dark:aria-selected:text-white rounded-2xl z-10
+                                        <button class="group relative flex items-center gap-4 w-full ~py-3/4 ~px-6/7 text-neutral-600 hover:text-black aria-selected:text-black dark:text-neutral-400 dark:hover:text-white dark:aria-selected:text-white rounded-2xl z-10
                                         before:absolute before:top-0 before:left-0 before:h-full before:w-full before:bg-neutral-100 dark:before:bg-neutral-800 before:border-2 before:border-neutral-300 dark:before:border-neutral-700 before:rounded-2xl before:-z-10
                                         before:transition-opacity before:duration-300 before:opacity-0 aria-selected:before:opacity-100"
                                             type="button"
@@ -235,7 +235,9 @@
                                             tabindex="0">
 
                                             <!-- ICON -->
-                                            {% include item.icon %}
+                                            <div class="[&>svg]:~h-5/6 [&>svg]:~w-5/6">
+                                                {% include item.icon %}
+                                            </div>
 
                                             <span class="pt-0.5 font-lekton text-lg font-bold">{{ item.label }}</span>
                                         </button>
@@ -246,7 +248,7 @@
 
                         {% for item in modules.items %}
                             <!-- TAB PANEL -->
-                            <div class="[&[hidden]]:hidden flex-1 flex max-2xl:flex-col gap-4"
+                            <div class="[&[hidden]]:hidden flex-1 flex max-2xl:flex-col ~gap-2/4"
                                 role="tabpanel"
                                 id="{{ item.id }}-panel"
                                 aria-labelledby="{{ item.id }}-tab"
@@ -254,22 +256,22 @@
                                 {% if loop.index !== 1 -%} hidden {%- endif %}>
 
                                 <!-- MAIN CONTENT -->
-                                <div class="flex-1 flex flex-col gap-12 ~p-8/12 bg-neutral-100 dark:bg-neutral-800 border-2 2xl:border-b-0 border-neutral-300 dark:border-neutral-700 rounded-3xl 2xl:rounded-b-none">
+                                <div class="flex-1 flex flex-col ~gap-10/12 ~p-5/12 bg-neutral-100 dark:bg-neutral-800 border-2 2xl:border-b-0 border-neutral-300 dark:border-neutral-700 rounded-3xl 2xl:rounded-b-none">
                                     <!-- TEXT + SUBITEMS -->
                                     <div class="flex flex-col gap-8">
                                         <!-- HEADING + TEXT -->
-                                        <div class="flex flex-col gap-5">
+                                        <div class="flex flex-col ~gap-4/5">
                                             <!-- TOPPER + HEADING -->
-                                            <div class="flex flex-col items-start gap-4">
+                                            <div class="flex flex-col items-start ~gap-3/4">
                                                 <span class="topper">{{ item.content.topper }}</span>
-                                                <h2 class="font-lekton text-3xl text-black dark:text-white font-bold">{{ item.content.heading }}</h2>
+                                                <h2 class="font-lekton ~text-2xl/3xl text-black dark:text-white font-bold">{{ item.content.heading }}</h2>
                                             </div>
 
                                             <p class="max-w-2xl text-neutral-800 dark:text-neutral-200">{{ item.content.text }}</p>
                                         </div>
 
                                         <!-- ITEMS -->
-                                        <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-2">
+                                        <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 ~gap-1/2">
                                             {% for subitem in item.content.subitems %}
                                                 <li class="flex items-center gap-3 py-3 px-4 bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 rounded-2xl">
                                                     <!-- ICON -->
@@ -293,12 +295,12 @@
                                 </div>
 
                                 <!-- CARDS -->
-                                <ul class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-1 gap-4 w-full 2xl:max-w-sm 2xl:pb-4">
+                                <ul class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-1 ~gap-2/4 w-full 2xl:max-w-sm 2xl:pb-4">
                                     {% for card in item.content.cards %}
-                                        <li class="flex flex-col justify-between gap-16 ~p-6/7 bg-neutral-100 dark:bg-neutral-800 border-2 border-neutral-300 dark:border-neutral-700 first:max-md:rounded-b-2xl last:max-md:border-b-0 last:max-md:rounded-b-none rounded-b-none 2xl:rounded-b-3xl rounded-3xl">
+                                        <li class="flex flex-col justify-between ~gap-8/16 ~p-5/7 bg-neutral-100 dark:bg-neutral-800 border-2 border-neutral-300 dark:border-neutral-700 first:max-md:rounded-b-2xl last:max-md:border-b-0 last:max-md:rounded-b-none rounded-b-none 2xl:rounded-b-3xl rounded-3xl">
                                             <!-- TITLE + BADGE -->
                                             <div class="flex justify-between items-center">
-                                                <span class="text-4.5xl text-black dark:text-white font-bold">{{ card.title }}</span>
+                                                <span class="~text-3xl/4.5xl text-black dark:text-white font-bold">{{ card.title }}</span>
                                                 <span class="topper">{{ card.badge }}</span>
                                             </div>
 
@@ -321,7 +323,7 @@
     <div class="bg-gradient-to-b from-white to-background-light dark:from-black dark:to-background">
         <!-- BLOG POSTS -->
         <section class="~py-16/24 ~px-4/8">
-            <div class="container m-auto flex flex-col gap-12">
+            <div class="container m-auto flex flex-col ~gap-8/12">
                 <!-- HEADING + CTA -->
                 <div class="flex justify-between items-end">
                     <!-- TOPPER + HEADING -->
@@ -336,7 +338,7 @@
                 <!-- BLOG POSTS -->
                 <ul class="grid grid-cols-1 2xl:grid-cols-3 gap-y-12 ~gap-x-4/6">
                     {% for post in collections.blog | reverse | limit(3) %}
-                        <li class="flex flex-col md:flex-row 2xl:flex-col items-center gap-8 2xl:gap-6">
+                        <li class="flex flex-col md:flex-row 2xl:flex-col items-center ~gap-4/8 2xl:gap-6">
                             <!-- POST IMAGE -->
                             <a href="{{ post.url }}" class="group md:basis-[40%] 2xl:basis-auto rounded-3xl overflow-hidden">
                                 <picture>
@@ -358,11 +360,11 @@
                             </a>
 
                             <!-- METADATA + TEXT -->
-                            <div class="md:basis-[60%] 2xl:basis-auto flex flex-col gap-6 2xl:px-6">
+                            <div class="md:basis-[60%] 2xl:basis-auto flex flex-col ~gap-4/6 px-4 2xl:px-6">
                                 <!-- METADATA -->
-                                <ul class="flex gap-2">
+                                <ul class="flex ~gap-1.5/2">
                                     <!-- DATE -->
-                                    <li class="flex items-center gap-2 py-1 px-3 bg-neutral-200 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 font-medium rounded-md [&>svg]:h-5 [&>svg]:w-5">
+                                    <li class="flex items-center gap-2 py-1 px-3 bg-neutral-200 dark:bg-neutral-900 ~text-sm/base text-neutral-700 dark:text-neutral-300 font-medium rounded-md [&>svg]:h-5 [&>svg]:w-5">
                                         <!-- ICON -->
                                         {% include "src/assets/svgs/blog/calendar_month.svg" %}
 
@@ -370,7 +372,7 @@
                                     </li>
 
                                     <!-- TIME TO READ -->
-                                    <li class="flex items-center gap-2 py-1 px-3 bg-neutral-200 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 font-medium rounded-md [&>svg]:h-5 [&>svg]:w-5">
+                                    <li class="flex items-center gap-2 py-1 px-3 bg-neutral-200 dark:bg-neutral-900 ~text-sm/base text-neutral-700 dark:text-neutral-300 font-medium rounded-md [&>svg]:h-5 [&>svg]:w-5">
                                         <!-- ICON -->
                                         {% include "src/assets/svgs/blog/timer.svg" %}
 
@@ -384,12 +386,15 @@
                                         <h3 class="font-lekton ~text-2xl/3xl text-black dark:text-white font-bold leading-none line-clamp-2">{{ post.data.title }}</h3>
                                     </a>
 
-                                    <p class="text-neutral-800 dark:text-neutral-200 line-clamp-2">{{ post.data.description }}</p>
+                                    <p class="text-neutral-800 dark:text-neutral-200 line-clamp-2 lg:line-clamp-3 2xl:line-clamp-2">{{ post.data.description }}</p>
                                 </div>
                             </div>
                         </li>
                     {% endfor %}
                 </ul>
+
+                <!-- MOBILE CTA -->
+                <a href="{{ blog.cta.url }}" class="md:hidden btn btn-lg">{{ blog.cta.text }}</a>
             </div>
         </section>
 

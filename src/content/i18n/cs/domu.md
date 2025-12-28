@@ -1,7 +1,7 @@
 ---
 layout: "pages/domu.njk"
 
-title: 'Efektivní weby na míru'
+title: 'Váš partner pro systém Helios Inuvio'
 description: 'V Senoweb se specializujeme na tvorbu webových stránek na míru. Nepoužíváme koupené šablony, nástroje pro automatizované budování webů ani nástroje, které by váš web zahlcovali zbytečným kódem a tím vaší stránku zpomalovaly.'
 permalink: '/'
 
@@ -301,38 +301,38 @@ modules:
 
         subitems:
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/shelves.svg
-              alt: Ikona regálu
+              url: /assets/svgs/modules/vyroba/conveyor_belt.svg
+              alt: Ikona výrobní linky
 
             text: Efektivní řízení výroby
 
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/automation.svg
-              alt: Ikona automatizace
+              url: /assets/svgs/modules/vyroba/request_quote.svg
+              alt: Ikona kalkulace
 
             text: Tvorba kalkulací
 
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/barcode_scanner.svg
-              alt: Ikona čárového kódu
+              url: /assets/svgs/modules/vyroba/inventory_2.svg
+              alt: Ikona krabice
 
             text: Optimalizace zásob
 
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/box.svg
-              alt: Ikona boxu
+              url: /assets/svgs/modules/vyroba/timelapse.svg
+              alt: Ikona hodin
 
             text: Méně prostojů
 
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/format_list_numbered.svg
-              alt: Ikona hodin
+              url: /assets/svgs/modules/vyroba/analytics.svg
+              alt: Ikona grafu
 
             text: Vyhodnocování zakázek
 
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/swap_vert.svg
-              alt: Ikona grafu
+              url: /assets/svgs/modules/vyroba/verified.svg
+              alt: Ikona fajfky
 
             text: Podpora norem ISO
         
@@ -361,40 +361,40 @@ modules:
 
         subitems:
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/shelves.svg
-              alt: Ikona regálu
-
-            text: Efektivní řízení výroby
-
-          - icon:
-              url: /assets/svgs/modules/sklady-obchod/automation.svg
+              url: /assets/svgs/modules/controlling/automation.svg
               alt: Ikona automatizace
 
-            text: Tvorba kalkulací
+            text: Automatizace procesů
 
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/barcode_scanner.svg
-              alt: Ikona čárového kódu
-
-            text: Optimalizace zásob
-
-          - icon:
-              url: /assets/svgs/modules/sklady-obchod/box.svg
-              alt: Ikona boxu
-
-            text: Méně prostojů
-
-          - icon:
-              url: /assets/svgs/modules/sklady-obchod/format_list_numbered.svg
-              alt: Ikona hodin
-
-            text: Vyhodnocování zakázek
-
-          - icon:
-              url: /assets/svgs/modules/sklady-obchod/swap_vert.svg
+              url: /assets/svgs/modules/controlling/analytics.svg
               alt: Ikona grafu
 
-            text: Podpora norem ISO
+            text: Detailní reporting
+
+          - icon:
+              url: /assets/svgs/modules/controlling/security.svg
+              alt: Ikona štítu
+
+            text: Data v bezpečí
+
+          - icon:
+              url: /assets/svgs/modules/controlling/splitscreen_landscape.svg
+              alt: Ikona okna
+
+            text: Jednoduché rozhraní
+
+          - icon:
+              url: /assets/svgs/modules/controlling/track_changes.svg
+              alt: Ikona sledování změn
+
+            text: Strategické řízení
+
+          - icon:
+              url: /assets/svgs/modules/controlling/public.svg
+              alt: Ikona zeměkoule
+
+            text: Přístup 24/7
         
         cta:
           url: /moduly/vyroba
@@ -421,40 +421,40 @@ modules:
 
         subitems:
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/shelves.svg
-              alt: Ikona regálu
+              url: /assets/svgs/modules/lidske-zdroje/payments.svg
+              alt: Ikona peněz
 
-            text: Efektivní řízení výroby
-
-          - icon:
-              url: /assets/svgs/modules/sklady-obchod/automation.svg
-              alt: Ikona automatizace
-
-            text: Tvorba kalkulací
+            text: Řešení mezd
 
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/barcode_scanner.svg
-              alt: Ikona čárového kódu
+              url: /assets/svgs/modules/lidske-zdroje/gavel.svg
+              alt: Ikona soudcovského kladívka
 
-            text: Optimalizace zásob
-
-          - icon:
-              url: /assets/svgs/modules/sklady-obchod/box.svg
-              alt: Ikona boxu
-
-            text: Méně prostojů
+            text: Legislativní podpora
 
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/format_list_numbered.svg
-              alt: Ikona hodin
+              url: /assets/svgs/modules/lidske-zdroje/table_chart.svg
+              alt: Ikona tabulky
 
-            text: Vyhodnocování zakázek
+            text: Vlastní mzdové sestavy
 
           - icon:
-              url: /assets/svgs/modules/sklady-obchod/swap_vert.svg
-              alt: Ikona grafu
+              url: /assets/svgs/modules/lidske-zdroje/fact_check.svg
+              alt: Ikona kontroly dat
 
-            text: Podpora norem ISO
+            text: Kontrola dat
+
+          - icon:
+              url: /assets/svgs/modules/lidske-zdroje/edit_note.svg
+              alt: Ikona řádků textu
+
+            text: Rychlé zadávání dat
+
+          - icon:
+              url: /assets/svgs/modules/lidske-zdroje/bar_chart.svg
+              alt: Ikona sloupcového grafu
+
+            text: Statistické výstupy
 
         cta:
           url: /moduly/vyroba

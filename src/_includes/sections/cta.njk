@@ -1,13 +1,14 @@
 <!-- CTA -->
 <section class="relative ~py-16/24 ~px-4/8 bg-neutral-100 dark:bg-neutral-950 border-y border-neutral-300 dark:border-neutral-700 overflow-hidden z-10">
-    <div class="container m-auto flex items-center gap-32">
+    <div class="container m-auto flex max-xl:flex-col-reverse justify-between items-center ~gap-12/24">
         <!-- BUBBLES -->
-        <div class="relative flex-1 h-[32rem]">
+        <div class="group flex h-[32rem]" data-spotlight>
             <!-- HELIOS EASY -->
-            <div class="border-gradient absolute top-4 left-0 p-1 rounded-full z-0">
+            <a href="/produkty-easy" class="border-gradient self-start relative p-1 rounded-full z-0 transition-transform duration-300 hover:-translate-y-1">
                 <!-- INNER CONTAINER -->
-                <div class="flex justify-center items-center h-[23.5rem] w-[23.5rem] bg-white dark:bg-neutral-900 rounded-full">
-                    <img src="/assets/svgs/products/helios-easy.svg"
+                <div class="spotlight-card flex justify-center items-center aspect-square ~p-12/16 bg-white dark:bg-neutral-900 rounded-full">
+                    <img class="h-auto ~w-[12rem]/[15.25rem]"
+                        src="/assets/svgs/products/helios-easy.svg"
                         alt="Ikona Helios Easy"
                         width="244"
                         height="113"
@@ -16,13 +17,14 @@
                         aria-hidden="true"
                         draggable="false">
                 </div>
-            </div>
+            </a>
 
             <!-- HELIOS INUVIO -->
-            <div class="border-gradient absolute bottom-0 left-[calc(50%+3rem)] -translate-x-1/2 p-1 rounded-full z-10">
+            <a href="/produkty-inuvio" class="border-gradient self-end relative -ml-32 p-1 rounded-full z-10 transition-transform duration-300 hover:-translate-y-1">
                 <!-- INNER CONTAINER -->
-                <div class="flex justify-center items-center h-[19.5rem] w-[19.5rem] bg-white dark:bg-neutral-900 rounded-full">
-                    <img src="/assets/svgs/products/helios-inuvio.svg"
+                <div class="spotlight-card flex justify-center items-center aspect-square ~p-10/14 bg-white dark:bg-neutral-900 rounded-full">
+                    <img class="h-auto ~w-[10rem]/[12.5rem]"
+                        src="/assets/svgs/products/helios-inuvio.svg"
                         alt="Ikona Helios Inuvio"
                         width="200"
                         height="87"
@@ -31,13 +33,14 @@
                         aria-hidden="true"
                         draggable="false">
                 </div>
-            </div>
+            </a>
 
             <!-- COALSHOP KONEKTOR -->
-            <div class="border-gradient absolute top-0 left-1/2 p-1 rounded-full z-10">
+            <a href="/coalshop-konektor" class="border-gradient self-start relative -ml-60 p-1 rounded-full z-20 transition-transform duration-300 hover:-translate-y-1">
                 <!-- INNER CONTAINER -->
-                <div class="flex justify-center items-center h-[15.5rem] w-[15.5rem] bg-white dark:bg-neutral-900 rounded-full">
-                    <img src="/assets/svgs/products/coalshop-konektor.svg"
+                <div class="spotlight-card flex justify-center items-center aspect-square ~p-6/8 bg-white dark:bg-neutral-900 rounded-full">
+                    <img class="h-auto ~w-[9rem]/[11.5rem]"
+                        src="/assets/svgs/products/coalshop-konektor.svg"
                         alt="Ikona coalshop konektor"
                         width="184"
                         height="60"
@@ -46,26 +49,26 @@
                         aria-hidden="true"
                         draggable="false">
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- TEXT + CTA -->
         <div class="flex flex-col items-start gap-8">
             <!-- HEADING + TEXT -->
-            <div class="flex flex-col gap-7">
+            <div class="flex flex-col ~gap-4/7">
                 <!-- TOPPER + HEADING -->
-                <div class="flex flex-col items-start gap-5">
+                <div class="flex flex-col items-start ~gap-3/5">
                     <!-- TOPPER -->
                     <div class="border-gradient p-0.5 rounded-full">
-                        <div class="flex items-center gap-3 py-2.5 px-4 bg-white dark:bg-neutral-900 rounded-full before:h-2 before:w-2 before:bg-primary before:rounded-full">
-                            <span class="font-lekton text-xl text-black dark:text-white leading-none">{{ hero.topper }}</span>
+                        <div class="flex items-center gap-3 ~py-1/2.5 px-4 bg-white dark:bg-neutral-900 rounded-full before:h-2 before:w-2 before:bg-primary before:rounded-full">
+                            <span class="font-lekton ~text-base/xl text-black dark:text-white leading-none">{{ cta.topper }}</span>
                         </div>
                     </div>
 
-                    <h2 class="max-w-xl font-lekton text-6xl text-black dark:text-white font-bold">{{ cta.heading }}</h2>
+                    <h2 class="~max-w-xs/xl font-lekton ~text-3xl/6xl text-black dark:text-white font-bold">{{ cta.heading }}</h2>
                 </div>
 
-                <p class="max-w-[44rem] text-2xl text-neutral-800 dark:text-neutral-200">{{ cta.text }}</p>
+                <p class="~max-w-md/[44rem] ~text-base/2xl text-neutral-800 dark:text-neutral-200">{{ cta.text }}</p>
             </div>
 
             <!-- CTA -->
@@ -73,15 +76,18 @@
         </div>
     </div>
 
+    <!-- BACKGROUND GRADIENT -->
+    <div class="absolute top-0 left-0 h-full w-full bg-[radial-gradient(circle_at_top_left,#FF9E1BFF_0%,#FF9E1B00_60%)] opacity-10 -z-10"></div>
+
     <!-- STAR ANIMATION -->
     <div class="absolute top-0 left-0 h-full w-full -z-10">
         {% for _ in range(2) %}
-            <div class="{% if loop.index === 1 -%} animate-vertical-marquee {%- else -%} absolute top-0 left-0 h-auto w-full animate-vertical-marquee2 {%- endif %}">
-                <div class="block dark:hidden">
+            <div class="{% if loop.index === 1 -%} animate-vertical-marquee {%- else -%} absolute top-0 left-0 h-full w-full animate-vertical-marquee2 {%- endif %}">
+                <div class="h-full block dark:hidden [&>svg]:h-full">
                     {% include "src/assets/svgs/cta/stars-black.svg" %}
                 </div>
 
-                <div class="hidden dark:block">
+                <div class="h-full hidden dark:block [&>svg]:h-full">
                     {% include "src/assets/svgs/cta/stars-white.svg" %}
                 </div>
             </div>

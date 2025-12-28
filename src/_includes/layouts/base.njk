@@ -49,7 +49,7 @@
     <title>{{ title }} | {{ client.name }}</title>
   </head>
 
-  <body class="group/body{% if page.url == '/' %} home{% else %} interior{% endif %}">
+  <body class="group/body [&.mobile-menu]:overflow-y-hidden {%- if page.url == '/' %} home {%- else %} interior {%- endif %}">
     <!-- Screen reader skip main nav -->
     <a class="sr-only" aria-label="Kliknutím přeskočíte na hlavní obsah" href="#main">Kliknutím přeskočíte na hlavní obsah</a>
 

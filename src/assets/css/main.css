@@ -1386,12 +1386,12 @@ select {
 }
 
 .btn-lg {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
   font-size: 1.25rem;
   line-height: 1.75rem;
+  padding-left: clamp(1.5rem,1.14rem + 0.89vw,2rem)/* fluid from 1.5rem at 40rem to 2rem at 96rem */;
+  padding-right: clamp(1.5rem,1.14rem + 0.89vw,2rem)/* fluid from 1.5rem at 40rem to 2rem at 96rem */;
+  padding-top: clamp(0.75rem,0.57rem + 0.45vw,1rem)/* fluid from 0.75rem at 40rem to 1rem at 96rem */;
+  padding-bottom: clamp(0.75rem,0.57rem + 0.45vw,1rem)/* fluid from 0.75rem at 40rem to 1rem at 96rem */;
 }
 
 /* ============== */
@@ -1576,10 +1576,6 @@ html.dark .border-gradient {
   left: 50%;
 }
 
-.left-24 {
-  left: 6rem;
-}
-
 .left-\[calc\(50\%\+3rem\)\] {
   left: calc(50% + 3rem);
 }
@@ -1598,6 +1594,10 @@ html.dark .border-gradient {
 
 .top-\[calc\(100\%\+1rem\)\] {
   top: calc(100% + 1rem);
+}
+
+.right-4 {
+  right: 1rem;
 }
 
 .-z-10 {
@@ -1626,6 +1626,11 @@ html.dark .border-gradient {
 
 .m-auto {
   margin: auto;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .-mb-px {
@@ -1662,6 +1667,30 @@ html.dark .border-gradient {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.-mt-2 {
+  margin-top: -0.5rem;
+}
+
+.-ml-32 {
+  margin-left: -8rem;
+}
+
+.-mb-36 {
+  margin-bottom: -9rem;
+}
+
+.-ml-96 {
+  margin-left: -24rem;
+}
+
+.-ml-52 {
+  margin-left: -13rem;
+}
+
+.-ml-60 {
+  margin-left: -15rem;
 }
 
 .line-clamp-1 {
@@ -1794,12 +1823,20 @@ html.dark .border-gradient {
   height: 100vh;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .max-h-\[30lh\] {
   max-height: 30lh;
 }
 
 .min-h-\[6lh\] {
   min-height: 6lh;
+}
+
+.w-1\/2 {
+  width: 50%;
 }
 
 .w-11 {
@@ -1850,6 +1887,14 @@ html.dark .border-gradient {
   width: 100vw;
 }
 
+.w-6 {
+  width: 1.5rem;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -1886,8 +1931,28 @@ html.dark .border-gradient {
   max-width: 36rem;
 }
 
+.max-w-\[15\.5rem\] {
+  max-width: 15.5rem;
+}
+
+.max-w-\[19\.5rem\] {
+  max-width: 19.5rem;
+}
+
+.max-w-\[23\.5rem\] {
+  max-width: 23.5rem;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
 .flex-1 {
   flex: 1 1 0%;
+}
+
+.origin-top {
+  transform-origin: top;
 }
 
 .-translate-x-1\/2 {
@@ -1907,6 +1972,11 @@ html.dark .border-gradient {
 
 .translate-y-6 {
   --tw-translate-y: 1.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-y-0 {
+  --tw-scale-y: 0;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2056,10 +2126,6 @@ html.dark .border-gradient {
   gap: 0.75rem;
 }
 
-.gap-32 {
-  gap: 8rem;
-}
-
 .gap-4 {
   gap: 1rem;
 }
@@ -2080,6 +2146,10 @@ html.dark .border-gradient {
   gap: 2rem;
 }
 
+.gap-24 {
+  gap: 6rem;
+}
+
 .gap-x-4 {
   -moz-column-gap: 1rem;
        column-gap: 1rem;
@@ -2093,6 +2163,14 @@ html.dark .border-gradient {
   row-gap: 2rem;
 }
 
+.gap-y-2 {
+  row-gap: 0.5rem;
+}
+
+.gap-y-16 {
+  row-gap: 4rem;
+}
+
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
@@ -2101,6 +2179,10 @@ html.dark .border-gradient {
 
 .self-start {
   align-self: flex-start;
+}
+
+.self-end {
+  align-self: flex-end;
 }
 
 .overflow-hidden {
@@ -2164,6 +2246,10 @@ html.dark .border-gradient {
 .border-y {
   border-top-width: 1px;
   border-bottom-width: 1px;
+}
+
+.border-none {
+  border-style: none;
 }
 
 .border-neutral-300 {
@@ -2247,8 +2333,25 @@ html.dark .border-gradient {
   background-color: rgb(255 255 255 / 0.5);
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[radial-gradient\(circle_at_top_left\2c \#FF9E1BFF_0\%\2c \#FF9E1B00_80\%\)\] {
+  background-image: radial-gradient(circle at top left,#FF9E1BFF 0%,#FF9E1B00 80%);
+}
+
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+
+.bg-\[radial-gradient\(circle_at_top_left\2c \#FF9E1BFF_0\%\2c \#FF9E1B00_75\%\)\] {
+  background-image: radial-gradient(circle at top left,#FF9E1BFF 0%,#FF9E1B00 75%);
+}
+
+.bg-\[radial-gradient\(circle_at_top_left\2c \#FF9E1BFF_0\%\2c \#FF9E1B00_60\%\)\] {
+  background-image: radial-gradient(circle at top left,#FF9E1BFF 0%,#FF9E1B00 60%);
 }
 
 .from-background-light {
@@ -2306,6 +2409,22 @@ html.dark .border-gradient {
 
 .p-8 {
   padding: 2rem;
+}
+
+.p-16 {
+  padding: 4rem;
+}
+
+.p-12 {
+  padding: 3rem;
+}
+
+.p-10 {
+  padding: 2.5rem;
+}
+
+.p-14 {
+  padding: 3.5rem;
 }
 
 .px-3 {
@@ -2389,17 +2508,20 @@ html.dark .border-gradient {
   padding-top: 20rem;
 }
 
+.\!pb-0 {
+  padding-bottom: 0px !important;
+}
+
+.text-left {
+  text-align: left;
+}
+
 .text-center {
   text-align: center;
 }
 
 .font-lekton {
   font-family: Lekton, ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .text-3xl {
@@ -2415,11 +2537,6 @@ html.dark .border-gradient {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 3.75rem;
 }
 
 .text-base {
@@ -2546,6 +2663,10 @@ html.dark .border-gradient {
   opacity: 0;
 }
 
+.opacity-10 {
+  opacity: 0.1;
+}
+
 .opacity-100 {
   opacity: 1;
 }
@@ -2629,8 +2750,28 @@ html.dark .border-gradient {
   transition-duration: 150ms;
 }
 
+.transition-\[background-color\2c _max-width\2c _border-color\2c _border-radius\] {
+  transition-property: background-color, max-width, border-color, border-radius;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-\[padding\2c _background-color\2c _max-width\2c _border-color\2c _border-radius\] {
+  transition-property: padding, background-color, max-width, border-color, border-radius;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .duration-300 {
   transition-duration: 300ms;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+.duration-\[400ms\] {
+  transition-duration: 400ms;
 }
 
 .\~text-2xl\/3xl {
@@ -2651,6 +2792,11 @@ html.dark .border-gradient {
 .\~text-3xl\/5xl {
   font-size: clamp(1.875rem,1.071rem + 2.009vw,3rem)/* fluid type from 1.875rem at 40rem to 3rem at 96rem */;
   line-height: clamp(2.25rem,1.71rem + 1.34vw,3rem)/* fluid from 2.25rem at 40rem to 3rem at 96rem */;
+}
+
+.\~text-base\/2xl {
+  font-size: clamp(1rem,0.64rem + 0.89vw,1.5rem)/* fluid type from 1rem at 40rem to 1.5rem at 96rem */;
+  line-height: clamp(1.5rem,1.14rem + 0.89vw,2rem)/* fluid from 1.5rem at 40rem to 2rem at 96rem */;
 }
 
 .\~text-base\/3xl {
@@ -2678,6 +2824,30 @@ html.dark .border-gradient {
   line-height: clamp(1.75rem,1.57rem + 0.45vw,2rem)/* fluid from 1.75rem at 40rem to 2rem at 96rem */;
 }
 
+.\~text-2xl\/5xl {
+  font-size: clamp(1.5rem,0.43rem + 2.68vw,3rem)/* fluid type from 1.5rem at 40rem to 3rem at 96rem */;
+  line-height: clamp(2rem,1.29rem + 1.79vw,3rem)/* fluid from 2rem at 40rem to 3rem at 96rem */;
+}
+
+.\~text-3xl\/6xl {
+  font-size: clamp(1.875rem,0.536rem + 3.348vw,3.75rem)/* fluid type from 1.875rem at 40rem to 3.75rem at 96rem */;
+  line-height: clamp(2.25rem,1.18rem + 2.68vw,3.75rem)/* fluid from 2.25rem at 40rem to 3.75rem at 96rem */;
+}
+
+.\~text-3xl\/4\.5xl {
+  font-size: clamp(1.875rem,1.429rem + 1.116vw,2.5rem)/* fluid type from 1.875rem at 40rem to 2.5rem at 96rem */;
+  line-height: clamp(2.25rem,2.07rem + 0.45vw,2.5rem)/* fluid from 2.25rem at 40rem to 2.5rem at 96rem */;
+}
+
+.\~text-base\/xl {
+  font-size: clamp(1rem,0.82rem + 0.45vw,1.25rem)/* fluid type from 1rem at 40rem to 1.25rem at 96rem */;
+  line-height: clamp(1.5rem,1.32rem + 0.45vw,1.75rem)/* fluid from 1.5rem at 40rem to 1.75rem at 96rem */;
+}
+
+.\~left-12\/24 {
+  left: clamp(3rem,0.86rem + 5.36vw,6rem)/* fluid from 3rem at 40rem to 6rem at 96rem */;
+}
+
 .\~ml-6\/8 {
   margin-left: clamp(1.5rem,1.14rem + 0.89vw,2rem)/* fluid from 1.5rem at 40rem to 2rem at 96rem */;
 }
@@ -2688,6 +2858,38 @@ html.dark .border-gradient {
 
 .\~h-9\/10 {
   height: clamp(2.25rem,2.07rem + 0.45vw,2.5rem)/* fluid from 2.25rem at 40rem to 2.5rem at 96rem */;
+}
+
+.\~h-12\/16 {
+  height: clamp(3rem,2.29rem + 1.79vw,4rem)/* fluid from 3rem at 40rem to 4rem at 96rem */;
+}
+
+.\~h-8\/10 {
+  height: clamp(2rem,1.64rem + 0.89vw,2.5rem)/* fluid from 2rem at 40rem to 2.5rem at 96rem */;
+}
+
+.\~h-7\/8 {
+  height: clamp(1.75rem,1.57rem + 0.45vw,2rem)/* fluid from 1.75rem at 40rem to 2rem at 96rem */;
+}
+
+.\~w-14\/16 {
+  width: clamp(3.5rem,3.14rem + 0.89vw,4rem)/* fluid from 3.5rem at 40rem to 4rem at 96rem */;
+}
+
+.\~w-12\/16 {
+  width: clamp(3rem,2.29rem + 1.79vw,4rem)/* fluid from 3rem at 40rem to 4rem at 96rem */;
+}
+
+.\~w-\[12rem\]\/\[15\.25rem\] {
+  width: clamp(12rem,9.68rem + 5.8vw,15.25rem)/* fluid from 12rem at 40rem to 15.25rem at 96rem */;
+}
+
+.\~w-\[10rem\]\/\[12\.5rem\] {
+  width: clamp(10rem,8.21rem + 4.46vw,12.5rem)/* fluid from 10rem at 40rem to 12.5rem at 96rem */;
+}
+
+.\~w-\[9rem\]\/\[11\.5rem\] {
+  width: clamp(9rem,7.21rem + 4.46vw,11.5rem)/* fluid from 9rem at 40rem to 11.5rem at 96rem */;
 }
 
 .\~max-w-5xl\/7xl {
@@ -2704,6 +2906,22 @@ html.dark .border-gradient {
 
 .\~max-w-xl\/4xl {
   max-width: clamp(36rem,21.71rem + 35.71vw,56rem)/* fluid from 36rem at 40rem to 56rem at 96rem */;
+}
+
+.\~max-w-xs\/xl {
+  max-width: clamp(20rem,8.57rem + 28.57vw,36rem)/* fluid from 20rem at 40rem to 36rem at 96rem */;
+}
+
+.\~max-w-\[16rem\]\/xl {
+  max-width: clamp(16rem,1.71rem + 35.71vw,36rem)/* fluid from 16rem at 40rem to 36rem at 96rem */;
+}
+
+.\~max-w-sm\/\[44rem\] {
+  max-width: clamp(24rem,9.71rem + 35.71vw,44rem)/* fluid from 24rem at 40rem to 44rem at 96rem */;
+}
+
+.\~max-w-md\/\[44rem\] {
+  max-width: clamp(28rem,16.57rem + 28.57vw,44rem)/* fluid from 28rem at 40rem to 44rem at 96rem */;
 }
 
 .\~gap-0 /* error - Missing end value */ {
@@ -2728,8 +2946,8 @@ html.dark .border-gradient {
   gap: clamp(3rem,2.29rem + 1.79vw,4rem)/* fluid from 3rem at 40rem to 4rem at 96rem */;
 }
 
-.\~gap-16\/24 {
-  gap: clamp(4rem,2.57rem + 3.57vw,6rem)/* fluid from 4rem at 40rem to 6rem at 96rem */;
+.\~gap-12\/24 {
+  gap: clamp(3rem,0.86rem + 5.36vw,6rem)/* fluid from 3rem at 40rem to 6rem at 96rem */;
 }
 
 .\~gap-16\/28 {
@@ -2772,6 +2990,45 @@ html.dark .border-gradient {
   gap: clamp(2rem,1.29rem + 1.79vw,3rem)/* fluid from 2rem at 40rem to 3rem at 96rem */;
 }
 
+.\~gap-3\/4 {
+  gap: clamp(0.75rem,0.57rem + 0.45vw,1rem)/* fluid from 0.75rem at 40rem to 1rem at 96rem */;
+}
+
+.\~gap-10\/12 {
+  gap: clamp(2.5rem,2.14rem + 0.89vw,3rem)/* fluid from 2.5rem at 40rem to 3rem at 96rem */;
+}
+
+.\~gap-1\/2 {
+  gap: clamp(0.25rem,0.07rem + 0.45vw,0.5rem)/* fluid from 0.25rem at 40rem to 0.5rem at 96rem */;
+}
+
+.\~gap-1 /* error - Missing end value */ {
+}
+
+.\~gap-1\.5\/2 {
+  gap: clamp(0.375rem,0.286rem + 0.223vw,0.5rem)/* fluid from 0.375rem at 40rem to 0.5rem at 96rem */;
+}
+
+.\~gap-4\/8 {
+  gap: clamp(1rem,0.29rem + 1.79vw,2rem)/* fluid from 1rem at 40rem to 2rem at 96rem */;
+}
+
+.\~gap-4\/7 {
+  gap: clamp(1rem,0.46rem + 1.34vw,1.75rem)/* fluid from 1rem at 40rem to 1.75rem at 96rem */;
+}
+
+.\~gap-10\/16 {
+  gap: clamp(2.5rem,1.43rem + 2.68vw,4rem)/* fluid from 2.5rem at 40rem to 4rem at 96rem */;
+}
+
+.\~gap-8\/16 {
+  gap: clamp(2rem,0.57rem + 3.57vw,4rem)/* fluid from 2rem at 40rem to 4rem at 96rem */;
+}
+
+.\~gap-3\/5 {
+  gap: clamp(0.75rem,0.39rem + 0.89vw,1.25rem)/* fluid from 0.75rem at 40rem to 1.25rem at 96rem */;
+}
+
 .\~gap-x-16\/28 {
   -moz-column-gap: clamp(4rem,1.86rem + 5.36vw,7rem)/* fluid from 4rem at 40rem to 7rem at 96rem */;
        column-gap: clamp(4rem,1.86rem + 5.36vw,7rem)/* fluid from 4rem at 40rem to 7rem at 96rem */;
@@ -2782,8 +3039,17 @@ html.dark .border-gradient {
        column-gap: clamp(1rem,0.64rem + 0.89vw,1.5rem)/* fluid from 1rem at 40rem to 1.5rem at 96rem */;
 }
 
+.\~gap-x-3\/5 {
+  -moz-column-gap: clamp(0.75rem,0.39rem + 0.89vw,1.25rem)/* fluid from 0.75rem at 40rem to 1.25rem at 96rem */;
+       column-gap: clamp(0.75rem,0.39rem + 0.89vw,1.25rem)/* fluid from 0.75rem at 40rem to 1.25rem at 96rem */;
+}
+
 .\~gap-y-8\/12 {
   row-gap: clamp(2rem,1.29rem + 1.79vw,3rem)/* fluid from 2rem at 40rem to 3rem at 96rem */;
+}
+
+.\~gap-y-6\/8 {
+  row-gap: clamp(1.5rem,1.14rem + 0.89vw,2rem)/* fluid from 1.5rem at 40rem to 2rem at 96rem */;
 }
 
 .\~p-1 /* error - Missing end value */ {
@@ -2805,6 +3071,46 @@ html.dark .border-gradient {
   padding: clamp(2rem,1.29rem + 1.79vw,3rem)/* fluid from 2rem at 40rem to 3rem at 96rem */;
 }
 
+.\~p-4\/6 {
+  padding: clamp(1rem,0.64rem + 0.89vw,1.5rem)/* fluid from 1rem at 40rem to 1.5rem at 96rem */;
+}
+
+.\~p-6\/12 {
+  padding: clamp(1.5rem,0.43rem + 2.68vw,3rem)/* fluid from 1.5rem at 40rem to 3rem at 96rem */;
+}
+
+.\~p-4\/12 {
+  padding: clamp(1rem,-0.43rem + 3.57vw,3rem)/* fluid from 1rem at 40rem to 3rem at 96rem */;
+}
+
+.\~p-4\/7 {
+  padding: clamp(1rem,0.46rem + 1.34vw,1.75rem)/* fluid from 1rem at 40rem to 1.75rem at 96rem */;
+}
+
+.\~p-5\/7 {
+  padding: clamp(1.25rem,0.89rem + 0.89vw,1.75rem)/* fluid from 1.25rem at 40rem to 1.75rem at 96rem */;
+}
+
+.\~p-5\/12 {
+  padding: clamp(1.25rem,0rem + 3.13vw,3rem)/* fluid from 1.25rem at 40rem to 3rem at 96rem */;
+}
+
+.\~p-6\/10 {
+  padding: clamp(1.5rem,0.79rem + 1.79vw,2.5rem)/* fluid from 1.5rem at 40rem to 2.5rem at 96rem */;
+}
+
+.\~p-8\/10 {
+  padding: clamp(2rem,1.64rem + 0.89vw,2.5rem)/* fluid from 2rem at 40rem to 2.5rem at 96rem */;
+}
+
+.\~p-12\/16 {
+  padding: clamp(3rem,2.29rem + 1.79vw,4rem)/* fluid from 3rem at 40rem to 4rem at 96rem */;
+}
+
+.\~p-10\/14 {
+  padding: clamp(2.5rem,1.79rem + 1.79vw,3.5rem)/* fluid from 2.5rem at 40rem to 3.5rem at 96rem */;
+}
+
 .\~px-4\/8 {
   padding-left: clamp(1rem,0.29rem + 1.79vw,2rem)/* fluid from 1rem at 40rem to 2rem at 96rem */;
   padding-right: clamp(1rem,0.29rem + 1.79vw,2rem)/* fluid from 1rem at 40rem to 2rem at 96rem */;
@@ -2820,6 +3126,21 @@ html.dark .border-gradient {
   padding-right: clamp(2rem,-0.14rem + 5.36vw,5rem)/* fluid from 2rem at 40rem to 5rem at 96rem */;
 }
 
+.\~px-2\/6 {
+  padding-left: clamp(0.5rem,-0.21rem + 1.79vw,1.5rem)/* fluid from 0.5rem at 40rem to 1.5rem at 96rem */;
+  padding-right: clamp(0.5rem,-0.21rem + 1.79vw,1.5rem)/* fluid from 0.5rem at 40rem to 1.5rem at 96rem */;
+}
+
+.\~px-6\/7 {
+  padding-left: clamp(1.5rem,1.32rem + 0.45vw,1.75rem)/* fluid from 1.5rem at 40rem to 1.75rem at 96rem */;
+  padding-right: clamp(1.5rem,1.32rem + 0.45vw,1.75rem)/* fluid from 1.5rem at 40rem to 1.75rem at 96rem */;
+}
+
+.\~px-6\/20 {
+  padding-left: clamp(1.5rem,-1rem + 6.25vw,5rem)/* fluid from 1.5rem at 40rem to 5rem at 96rem */;
+  padding-right: clamp(1.5rem,-1rem + 6.25vw,5rem)/* fluid from 1.5rem at 40rem to 5rem at 96rem */;
+}
+
 .\~py-1 /* error - Missing end value */ {
 }
 
@@ -2833,6 +3154,21 @@ html.dark .border-gradient {
   padding-bottom: clamp(4rem,2.57rem + 3.57vw,6rem)/* fluid from 4rem at 40rem to 6rem at 96rem */;
 }
 
+.\~py-3\/4 {
+  padding-top: clamp(0.75rem,0.57rem + 0.45vw,1rem)/* fluid from 0.75rem at 40rem to 1rem at 96rem */;
+  padding-bottom: clamp(0.75rem,0.57rem + 0.45vw,1rem)/* fluid from 0.75rem at 40rem to 1rem at 96rem */;
+}
+
+.\~py-1\/2 {
+  padding-top: clamp(0.25rem,0.07rem + 0.45vw,0.5rem)/* fluid from 0.25rem at 40rem to 0.5rem at 96rem */;
+  padding-bottom: clamp(0.25rem,0.07rem + 0.45vw,0.5rem)/* fluid from 0.25rem at 40rem to 0.5rem at 96rem */;
+}
+
+.\~py-1\/2\.5 {
+  padding-top: clamp(0.25rem,-0.018rem + 0.67vw,0.625rem)/* fluid from 0.25rem at 40rem to 0.625rem at 96rem */;
+  padding-bottom: clamp(0.25rem,-0.018rem + 0.67vw,0.625rem)/* fluid from 0.25rem at 40rem to 0.625rem at 96rem */;
+}
+
 .\~pt-12\/16 {
   padding-top: clamp(3rem,2.29rem + 1.79vw,4rem)/* fluid from 3rem at 40rem to 4rem at 96rem */;
 }
@@ -2841,12 +3177,28 @@ html.dark .border-gradient {
   padding-top: clamp(4rem,2.57rem + 3.57vw,6rem)/* fluid from 4rem at 40rem to 6rem at 96rem */;
 }
 
+.\~pt-4\/6 {
+  padding-top: clamp(1rem,0.64rem + 0.89vw,1.5rem)/* fluid from 1rem at 40rem to 1.5rem at 96rem */;
+}
+
+.\~pt-10\/16 {
+  padding-top: clamp(2.5rem,1.43rem + 2.68vw,4rem)/* fluid from 2.5rem at 40rem to 4rem at 96rem */;
+}
+
 .\~pr-4\/8 {
   padding-right: clamp(1rem,0.29rem + 1.79vw,2rem)/* fluid from 1rem at 40rem to 2rem at 96rem */;
 }
 
+.\~pb-8\/12 {
+  padding-bottom: clamp(2rem,1.29rem + 1.79vw,3rem)/* fluid from 2rem at 40rem to 3rem at 96rem */;
+}
+
 .\~pl-8\/12 {
   padding-left: clamp(2rem,1.29rem + 1.79vw,3rem)/* fluid from 2rem at 40rem to 3rem at 96rem */;
+}
+
+.\~pl-6\/12 {
+  padding-left: clamp(1.5rem,0.43rem + 2.68vw,3rem)/* fluid from 1.5rem at 40rem to 3rem at 96rem */;
 }
 
 .scrollbar::-webkit-scrollbar-track {
@@ -3458,6 +3810,11 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.group\/body.mobile-menu .group-\[\.mobile-menu\]\/body\:scale-y-100 {
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .group\/body.scroll .group-\[\.scroll\]\/body\:rounded-none {
   border-radius: 0px;
 }
@@ -3470,6 +3827,14 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
   border-bottom-width: 1px;
 }
 
+.group\/body.scroll .group-\[\.scroll\]\/body\:border-none {
+  border-style: none;
+}
+
+.group\/body.scroll .group-\[\.scroll\]\/body\:border-transparent {
+  border-color: transparent;
+}
+
 .group\/body.scroll .group-\[\.scroll\]\/body\:bg-transparent {
   background-color: transparent;
 }
@@ -3478,8 +3843,23 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
   background-color: rgb(255 255 255 / 0.9);
 }
 
+.group\/body.scroll .group-\[\.scroll\]\/body\:px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .group.active .group-\[\.active\]\:opacity-0 {
   opacity: 0;
+}
+
+.group\/body.scroll .group-\[\.scroll\]\/body\:shadow-none {
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.group\/body.scroll .group-\[\.scroll\]\/body\:\~h-\[4\.75rem\]\/\[5\.5rem\] {
+  height: clamp(4.75rem,4.21rem + 1.34vw,5.5rem)/* fluid from 4.75rem at 40rem to 5.5rem at 96rem */;
 }
 
 .aria-selected\:text-black[aria-selected="true"] {
@@ -3499,6 +3879,11 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
 
 .hover\:-translate-y-0\.5:hover {
   --tw-translate-y: -0.125rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hover\:-translate-y-1:hover {
+  --tw-translate-y: -0.25rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -3547,6 +3932,10 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
 
   .max-xl\:flex-col-reverse {
     flex-direction: column-reverse;
+  }
+
+  .max-xl\:self-start {
+    align-self: flex-start;
   }
 }
 
@@ -3618,6 +4007,16 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
   }
 }
 
+@media not all and (min-width: 40rem) {
+  .max-sm\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .max-sm\:flex-col {
+    flex-direction: column;
+  }
+}
+
 @media (min-width: 40rem) {
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3627,12 +4026,24 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
     flex-direction: row;
   }
 
+  .sm\:items-center {
+    align-items: center;
+  }
+
   .sm\:gap-16 {
     gap: 4rem;
+  }
+
+  .sm\:text-center {
+    text-align: center;
   }
 }
 
 @media (min-width: 48rem) {
+  .md\:hidden {
+    display: none;
+  }
+
   .md\:basis-\[40\%\] {
     flex-basis: 40%;
   }
@@ -3651,6 +4062,13 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
 }
 
 @media (min-width: 64rem) {
+  .lg\:line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
   .lg\:block {
     display: block;
   }
@@ -3673,6 +4091,14 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
 
   .lg\:gap-8 {
     gap: 2rem;
+  }
+
+  .lg\:gap-2 {
+    gap: 0.5rem;
+  }
+
+  .lg\:gap-2\.5 {
+    gap: 0.625rem;
   }
 
   .lg\:pb-4 {
@@ -3711,6 +4137,13 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
 }
 
 @media (min-width: 96rem) {
+  .\32xl\:line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
   .\32xl\:max-w-sm {
     max-width: 24rem;
   }
@@ -3838,6 +4271,11 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
   background-color: rgb(2 6 23 / var(--tw-bg-opacity, 1));
 }
 
+.dark\:bg-white:where(.dark, .dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
 .dark\:from-background:where(.dark, .dark *) {
   --tw-gradient-from: #27251F var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(39 37 31 / 0) var(--tw-gradient-to-position);
@@ -3942,12 +4380,20 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.\[\&\.mobile-menu\]\:overflow-y-hidden.mobile-menu {
+  overflow-y: hidden;
+}
+
 .\[\&\>svg\]\:h-5>svg {
   height: 1.25rem;
 }
 
 .\[\&\>svg\]\:h-7>svg {
   height: 1.75rem;
+}
+
+.\[\&\>svg\]\:h-full>svg {
+  height: 100%;
 }
 
 .\[\&\>svg\]\:w-5>svg {
@@ -3962,8 +4408,24 @@ html.dark label.darkmode-container input[type="checkbox"]~.elements svg:nth-chil
   width: auto;
 }
 
-.\[\&\>svg\]\:\~h-7\/8>svg {
-  height: clamp(1.75rem,1.57rem + 0.45vw,2rem)/* fluid from 1.75rem at 40rem to 2rem at 96rem */;
+.\[\&\>svg\]\:\~h-6\/8>svg {
+  height: clamp(1.5rem,1.14rem + 0.89vw,2rem)/* fluid from 1.5rem at 40rem to 2rem at 96rem */;
+}
+
+.\[\&\>svg\]\:\~h-5\/6>svg {
+  height: clamp(1.25rem,1.07rem + 0.45vw,1.5rem)/* fluid from 1.25rem at 40rem to 1.5rem at 96rem */;
+}
+
+.\[\&\>svg\]\:\~w-5\/6>svg {
+  width: clamp(1.25rem,1.07rem + 0.45vw,1.5rem)/* fluid from 1.25rem at 40rem to 1.5rem at 96rem */;
+}
+
+.\[\&\>svg\]\:\~w-5\/7>svg {
+  width: clamp(1.25rem,0.89rem + 0.89vw,1.75rem)/* fluid from 1.25rem at 40rem to 1.75rem at 96rem */;
+}
+
+.\[\&\>svg\]\:\~w-6\/7>svg {
+  width: clamp(1.5rem,1.32rem + 0.45vw,1.75rem)/* fluid from 1.5rem at 40rem to 1.75rem at 96rem */;
 }
 
 .\[\&\[hidden\]\]\:hidden[hidden] {

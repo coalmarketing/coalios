@@ -34,12 +34,12 @@
 
         <!-- CONTACT FORM -->
         <div class="border-gradient flex-1 p-0.5 rounded-3xl">
-            <form class="grid grid-cols-2 gap-y-8 gap-x-4 ~p-8/12 bg-neutral-100 dark:bg-neutral-900 rounded-3xl" method="POST" action="/dekujeme" netlify netlify-honeypot="bot-field">
+            <form class="grid grid-cols-2 ~gap-y-6/8 gap-x-4 ~p-8/12 bg-neutral-100 dark:bg-neutral-900 rounded-3xl" method="POST" action="/dekujeme" netlify netlify-honeypot="bot-field">
                 <!-- HONEYPOT -->
                 <input class="sr-only" type="search" name="bot-field" tabindex="-1" autocomplete="off" spellcheck="false" placeholder="Leave this empty" aria-hidden="true">
 
                 {% for field in contactForm.form.fields %}
-                    <label class="flex flex-col gap-2.5 {%- if field.type === 'textarea' %} col-span-2 {%- endif %}">
+                    <label class="flex flex-col gap-2.5 {%- if field.type === 'textarea' %} col-span-2 {%- else %} max-sm:col-span-2 {%- endif %}">
                         <p class="flex items-start">
                             <span class="font-lekton text-black dark:text-white font-bold">{{ field.label }}</span>
                             {% if field.required %}
