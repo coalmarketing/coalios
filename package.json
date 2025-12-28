@@ -5,7 +5,7 @@
 	"description": "Senoweb - ručně vyvinuté weby na míru",
 	"main": "index.js",
 	"scripts": {
-		"watch:eleventy": "cross-env ELEVENTY_ENV=DEV eleventy --serve",
+		"watch:eleventy": "cross-env ELEVENTY_ENV=PROD eleventy --serve",
 		"build:eleventy": "cross-env ELEVENTY_ENV=PROD eleventy",
 		"watch:tailwind": "tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/main.css --watch --postcss",
 		"build:tailwind": "tailwindcss -i ./src/assets/css/input.css -o ./public/assets/css/main.css --minify --postcss",
