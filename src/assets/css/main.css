@@ -1624,10 +1624,6 @@ html.dark .border-gradient {
   margin-bottom: -1px;
 }
 
-.-ml-32 {
-  margin-left: -8rem;
-}
-
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -1748,10 +1744,6 @@ html.dark .border-gradient {
 
 .h-\[2\.375rem\] {
   height: 2.375rem;
-}
-
-.h-\[32rem\] {
-  height: 32rem;
 }
 
 .h-auto {
@@ -2641,16 +2633,12 @@ html.dark .border-gradient {
   margin-left: clamp(1.5rem,1.14rem + 0.89vw,2rem)/* fluid from 1.5rem at 40rem to 2rem at 96rem */;
 }
 
-.\~-ml-40\/60 {
-  margin-left: clamp(-15rem,-6.43rem + -8.93vw,-10rem)/* fluid from -10rem at 40rem to -15rem at 96rem */;
-}
-
-.\~-ml-20\/32 {
-  margin-left: clamp(-8rem,-2.86rem + -5.36vw,-5rem)/* fluid from -5rem at 40rem to -8rem at 96rem */;
-}
-
 .\~-ml-24\/32 {
   margin-left: clamp(-8rem,-4.57rem + -3.57vw,-6rem)/* fluid from -6rem at 40rem to -8rem at 96rem */;
+}
+
+.\~-ml-40\/60 {
+  margin-left: clamp(-15rem,-6.43rem + -8.93vw,-10rem)/* fluid from -10rem at 40rem to -15rem at 96rem */;
 }
 
 .\~h-12\/16 {
@@ -2667,13 +2655,6 @@ html.dark .border-gradient {
 
 .\~h-8\/10 {
   height: clamp(2rem,1.64rem + 0.89vw,2.5rem)/* fluid from 2rem at 40rem to 2.5rem at 96rem */;
-}
-
-.\~h-\[24rem\] /* error - Missing end value */ {
-}
-
-.\~h-\[24rem\]\/\[32rem\] {
-  height: clamp(24rem,18.29rem + 14.29vw,32rem)/* fluid from 24rem at 40rem to 32rem at 96rem */;
 }
 
 .\~w-12\/16 {
