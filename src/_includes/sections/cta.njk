@@ -2,14 +2,14 @@
 <section class="relative ~py-16/24 ~px-4/8 bg-neutral-100 dark:bg-neutral-950 border-y border-neutral-300 dark:border-neutral-700 overflow-hidden z-10">
     <div class="container m-auto flex max-xl:flex-col-reverse justify-between items-center ~gap-12/24">
         <!-- BUBBLES -->
-        <div class="group flex w-full max-w-xl" data-spotlight>
+        <div class="group relative w-full max-w-xl aspect-[12/11] max-sm:scale-95" data-spotlight>
             <!-- HELIOS EASY -->
-            <a href="/produkty/helios-easy" class="border-gradient self-start relative p-1 rounded-full z-0 transition-transform duration-300 hover:-translate-y-1">
+            <a href="/produkty/helios-easy" class="border-gradient absolute top-0 left-0 w-8/12 ~p-0.5/1 rounded-full z-0 transition-transform duration-300 hover:-translate-y-1">
                 <span class="sr-only">Helios Easy</span>
 
                 <!-- INNER CONTAINER -->
-                <div class="spotlight-card flex justify-center items-center aspect-square ~p-12/16 bg-white dark:bg-neutral-900 rounded-full">
-                    <img class="h-auto ~w-[12rem]/[15.25rem]"
+                <div class="spotlight-card flex justify-center items-center aspect-square ~p-8/16 bg-white dark:bg-neutral-900 rounded-full">
+                    <img class="h-auto w-full"
                         src="/assets/svgs/products/helios-easy.svg"
                         alt="Ikona Helios Easy"
                         width="244"
@@ -22,12 +22,12 @@
             </a>
 
             <!-- HELIOS INUVIO -->
-            <a href="/produkty/helios-inuvio" class="border-gradient self-end relative ~-ml-24/32 p-1 rounded-full z-10 transition-transform duration-300 hover:-translate-y-1">
+            <a href="/produkty/helios-inuvio" class="border-gradient absolute bottom-0 left-[40%] w-7/12 ~p-0.5/1 rounded-full z-10 transition-transform duration-300 hover:-translate-y-1">
                 <span class="sr-only">Helios Inuvio</span>
 
                 <!-- INNER CONTAINER -->
-                <div class="spotlight-card flex justify-center items-center aspect-square ~p-10/14 bg-white dark:bg-neutral-900 rounded-full">
-                    <img class="h-auto ~w-[10rem]/[12.5rem]"
+                <div class="spotlight-card flex justify-center items-center aspect-square ~p-6/14 bg-white dark:bg-neutral-900 rounded-full">
+                    <img class="h-auto w-full"
                         src="/assets/svgs/products/helios-inuvio.svg"
                         alt="Ikona Helios Inuvio"
                         width="200"
@@ -40,12 +40,12 @@
             </a>
 
             <!-- COALSHOP KONEKTOR -->
-            <a href="/produkty/coalshop-konektor" class="border-gradient self-start relative ~-ml-40/60 p-1 rounded-full z-20 transition-transform duration-300 hover:-translate-y-1">
+            <a href="/produkty/coalshop-konektor" class="border-gradient absolute left-[60%] top-0 w-5/12 ~p-0.5/1 rounded-full z-20 transition-transform duration-300 hover:-translate-y-1">
                 <span class="sr-only">coalshop konektor</span>
 
                 <!-- INNER CONTAINER -->
-                <div class="spotlight-card flex justify-center items-center aspect-square ~p-6/8 bg-white dark:bg-neutral-900 rounded-full">
-                    <img class="h-auto ~w-[9rem]/[11.5rem]"
+                <div class="spotlight-card flex justify-center items-center aspect-square ~p-4/8 bg-white dark:bg-neutral-900 rounded-full">
+                    <img class="h-auto w-full"
                         src="/assets/svgs/products/coalshop-konektor.svg"
                         alt="Ikona coalshop konektor"
                         width="184"
@@ -71,7 +71,7 @@
                         </div>
                     </div>
 
-                    <h2 class="~max-w-xs/xl font-lekton ~text-3xl/6xl text-black dark:text-white font-bold">{{ cta.heading }}</h2>
+                    <h2 class="~max-w-[18rem]/xl font-lekton ~text-3xl/6xl text-black dark:text-white font-bold">{{ cta.heading }}</h2>
                 </div>
 
                 <p class="~max-w-md/[44rem] ~text-base/2xl text-neutral-800 dark:text-neutral-200">{{ cta.text }}</p>

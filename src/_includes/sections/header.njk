@@ -34,7 +34,7 @@
 
           <!-- BLACK LOGO -->
           <img
-            class="block dark:hidden ~h-7/8 w-auto"
+            class="block dark:hidden ~h-6/8 w-auto"
             src="/assets/svgs/coalios_logo-black.svg"
             alt="coalios logo"
             width="165"
@@ -46,7 +46,7 @@
 
           <!-- WHITE LOGO -->
           <img
-            class="hidden dark:block ~h-7/8 w-auto"
+            class="hidden dark:block ~h-6/8 w-auto"
             src="/assets/svgs/coalios_logo-white.svg"
             alt="coalios logo"
             width="165"
@@ -178,7 +178,7 @@
 </div>
 
 <!-- MOBILE MENU -->
-<div class="fixed flex flex-col gap-8 h-screen w-screen ~p-8/10 bg-white dark:bg-black z-50 transition-transform duration-300 scale-y-0 origin-top group-[.mobile-menu]/body:scale-y-100">
+<div class="fixed flex flex-col gap-12 h-screen w-screen ~p-8/10 bg-white dark:bg-black z-50 transition-transform duration-300 scale-y-0 origin-top group-[.mobile-menu]/body:scale-y-100">
   <!-- LOGO + MOBILE MENU BUTTON -->
   <div class="flex justify-between items-center">
     <!-- LOGO -->
@@ -224,4 +224,70 @@
       </span>
     </button>
   </div>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <ul class="flex max-lg:flex-col ~gap-2/8">
+      {% set navPages = collections.all | eleventyNavigation %}
+
+      {# Loop through all pages with a eleventyNavigation in the frontmatter #}
+      {% for entry in navPages %}
+
+        {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
+        {% set hasChild = entry.children.length %}
+
+        <li
+                class="group/li inline-flex {% if hasChild -%} dropdown {%- endif %}"
+                {%- if hasChild -%}tabindex="0"{%- endif -%}
+              >
+
+          {# If the page has child dropdown pages, render it as a <button> tag with the appropriate dropdown HTML #}
+          {% if hasChild %}
+            {# Render the <button> with the active class, dropdown icon and child links #}
+            <button
+                    class="dropdown-button"
+                    aria-expanded="false"
+                    aria-controls="dropdown-{{ entry.key | slug }}"
+                    aria-label="dropdown-{{ entry.key | slug }}"
+                    type="button"
+                  >
+              <span>{{ entry.key }}</span>
+
+              <!-- ICON -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="mt-0.5" viewBox="0 0 16 16">
+                <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+              </svg>
+            </button>
+
+            {# Dropdowns have another ul/li set up within the parent li, which gets rendered in the same way as a normal link #}
+            <div>
+              <ul id="dropdown-{{ entry.key | slug }}">
+                {% for child in entry.children %}
+                  <li class="drop-li">
+                    <a href="{{ child.url }}"
+                            class="li-link inline-flex whitespace-nowrap ~p-1.5/4 ~text-sm/base
+                            {%- if child.url == page.url %} text-white
+                            {%- else %} text-gray-200 hover:text-white{% endif %}"
+                            {%- if child.url == page.url -%}aria-current="page"{%- endif -%}
+                          >
+                      {{ child.key }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% else %}
+            {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
+            <a class="w-full ~p-1.5/4 whitespace-nowrap transition-colors duration-300
+                    {%- if entry.url == page.url %} text-black dark:text-white font-semibold
+                    {%- else %} text-neutral-800 hover:text-black dark:text-neutral-200 dark:hover:text-white{% endif %}"
+                    href="{{ entry.url }}"
+                    {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
+              {{ entry.key }}
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
 </div>
