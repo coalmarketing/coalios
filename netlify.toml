@@ -13,7 +13,5 @@
   [plugins.inputs]
   paths = [
     "public/assets/images",
-    "public/assets/images/cms",
-    "public/assets/cms",
     ".cache"
   ]
