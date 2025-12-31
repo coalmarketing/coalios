@@ -1,9 +1,9 @@
 <!-- DESKTOP SCREEN -->
-<div class="border-gradient p-0.5 pb-0 rounded-t-4xl">
+<div class="border-gradient p-0.5 pb-0 rounded-4xl">
     <!-- INNER CONTAINER -->
-    <div class="flex flex-col bg-neutral-200 dark:bg-neutral-900 rounded-t-4xl">
+    <div class="flex flex-col p-2 bg-neutral-200 dark:bg-neutral-900 rounded-4xl">
         <!-- TOP BAR -->
-        <div class="flex justify-center lg:justify-between items-center gap-4 py-3 ~px-6/8 bg-neutral-100 dark:bg-neutral-950 rounded-t-4xl">
+        <div class="flex justify-center lg:justify-between items-center gap-4 py-2 ~px-6/8 bg-neutral-100 dark:bg-neutral-950 rounded-4xl">
             <!-- CONTROL BUTTONS -->
             <ul class="hidden lg:flex gap-1.5">
                 {% for _ in range(3) %}
@@ -12,7 +12,7 @@
             </ul>
 
             <!-- SEARCH BAR -->
-            <div class="w-full max-w-[25rem] py-1.5 px-3 bg-neutral-200 dark:bg-neutral-800 text-center text-sm text-neutral-800 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-md select-none">
+            <div class="w-full max-w-[25rem] py-1.5 px-3 bg-neutral-200 dark:bg-neutral-800 text-center text-sm text-neutral-800 dark:text-neutral-300 border border-neutral-300 dark:border-neutral-700 rounded-full select-none">
                 {% set url = client
                     .domain
                     .split("https://") %}
@@ -25,7 +25,7 @@
         </div>
 
         <!-- WINDOW -->
-        <div class="tabs flex max-lg:flex-col ~gap-2/4 lg:gap-8 ~pt-4/6 ~px-2/6">
+        <div class="tabs flex max-lg:flex-col ~gap-2/4 lg:gap-8 ~py-4/6 ~px-2/4">
             <!-- TAB NAVIGATION -->
             <nav class="flex flex-col gap-2 lg:pb-4" role="tablist" aria-orientation="vertical">
                 {% for item in modules.items %}
@@ -59,14 +59,16 @@
                     {% if loop.index !== 1 -%} hidden {%- endif %}>
 
                     <!-- MAIN CONTENT -->
-                    <div class="flex-1 flex flex-col ~gap-10/12 ~p-5/12 bg-neutral-100 dark:bg-neutral-800 border-2 2xl:border-b-0 border-neutral-300 dark:border-neutral-700 rounded-3xl 2xl:rounded-b-none">
+                    <div class="flex-1 flex flex-col ~gap-10/12 ~p-5/12 bg-neutral-100 dark:bg-neutral-800 border-2 border-neutral-300 dark:border-neutral-700 rounded-3xl">
                         <!-- TEXT + SUBITEMS -->
                         <div class="flex flex-col gap-8">
                             <!-- HEADING + TEXT -->
                             <div class="flex flex-col ~gap-4/5">
                                 <!-- TOPPER + HEADING -->
                                 <div class="flex flex-col items-start ~gap-3/4">
-                                    <span class="topper">{{ item.content.topper }}</span>
+                                    <div class="border-gradient p-0.5 rounded-full">
+                                        <span class="topper dark:bg-neutral-700">{{ item.content.topper }}</span>
+                                    </div>
                                     <h2 class="font-lekton ~text-2xl/3xl text-black dark:text-white font-bold">{{ item.content.heading }}</h2>
                                 </div>
 
@@ -74,37 +76,45 @@
                             </div>
 
                             <!-- ITEMS -->
-                            <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 ~gap-1/2">
+                            <ul class="group grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 ~gap-1/2" data-spotlight="border" data-radius="125">
                                 {% for subitem in item.content.subitems %}
-                                    <li class="flex items-center gap-3 py-3 px-4 bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700 rounded-2xl">
-                                        <!-- ICON -->
-                                        <img src="{{ subitem.icon.url }}"
-                                            alt="{{ subitem.icon.alt }}"
-                                            width="24"
-                                            height="24"
-                                            loading="lazy"
-                                            decoding="async"
-                                            aria-hidden="true"
-                                            draggable="false">
+                                    <li class="border-gradient p-0.5 rounded-2xl">
+                                        <div class="flex items-center gap-3 py-3 px-4 bg-white dark:bg-neutral-900 rounded-2xl">
+                                            <!-- ICON -->
+                                            <img src="{{ subitem.icon.url }}"
+                                                alt="{{ subitem.icon.alt }}"
+                                                width="24"
+                                                height="24"
+                                                loading="lazy"
+                                                decoding="async"
+                                                aria-hidden="true"
+                                                draggable="false">
 
-                                        <span class="font-lekton text-sm text-black dark:text-white font-bold">{{ subitem.text }}</span>
+                                            <span class="font-lekton text-sm text-black dark:text-white font-bold">{{ subitem.text }}</span>
+                                        </div>
                                     </li>
                                 {% endfor %}
                             </ul>
                         </div>
 
                         <!-- CTA -->
-                        <a href="{{ item.content.cta.url }}" class="btn self-start">{{ item.content.cta.text }}</a>
+                        <a href="{{ item.content.cta.url }}" class="btn self-start">
+                            {% for _ in range(2) %}
+                                <span>{{ item.content.cta.text }}</span>
+                            {% endfor %}
+                        </a>
                     </div>
 
                     <!-- CARDS -->
-                    <ul class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-1 ~gap-2/4 w-full 2xl:max-w-sm 2xl:pb-4">
+                    <ul class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-1 ~gap-2/4 w-full 2xl:max-w-sm">
                         {% for card in item.content.cards %}
                             <li class="flex flex-col justify-between ~gap-8/16 ~p-5/7 bg-neutral-100 dark:bg-neutral-800 border-2 border-neutral-300 dark:border-neutral-700 first:max-md:rounded-b-2xl last:max-md:border-b-0 last:max-md:rounded-b-none rounded-b-none 2xl:rounded-b-3xl rounded-3xl">
                                 <!-- TITLE + BADGE -->
                                 <div class="flex justify-between items-center">
                                     <span class="~text-3xl/4.5xl text-black dark:text-white font-bold">{{ card.title }}</span>
-                                    <span class="topper">{{ card.badge }}</span>
+                                    <div class="border-gradient p-0.5 rounded-full">
+                                        <span class="topper dark:bg-neutral-700">{{ card.badge }}</span>
+                                    </div>
                                 </div>
 
                                 <p class="text-sm text-neutral-800 dark:text-neutral-200">{{ card.text | safe }}</p>

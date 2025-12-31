@@ -7,7 +7,9 @@
             <div class="flex flex-col items-start ~gap-5/6">
                 <!-- TOPPER + HEADING -->
                 <div class="flex flex-col items-start gap-4">
-                    <span class="topper">{{ contactForm.topper }}</span>
+                    <div class="border-gradient p-0.5 rounded-full">
+                        <span class="topper">{{ contactForm.topper }}</span>
+                    </div>
                     <h2 class="~max-w-sm/xl font-lekton ~text-3xl/5xl text-black dark:text-white font-bold">{{ contactForm.heading }}</h2>
                 </div>
 
@@ -55,7 +57,11 @@
                     </label>
                 {% endfor %}
 
-                <button type="submit" class="btn col-span-2">{{ contactForm.form.send }}</button>
+                <button type="submit" class="btn col-span-2">
+                    {% for _ in range(2) %}
+                        <span>{{ contactForm.form.send }}</span>
+                    {% endfor %}
+                </button>
             </form>
         </div>
     </div>

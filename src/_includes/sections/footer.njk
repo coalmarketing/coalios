@@ -35,17 +35,17 @@
                     </div>
 
                     <!-- NEWSLETTER -->
-                    <form method="POST" class="flex items-end gap-1">
-                        <label class="flex flex-col items-start gap-3">
+                    <form method="POST" class="flex items-end gap-1.5">
+                        <label class="flex flex-col items-start gap-2">
                             <span class="font-lekton text-black dark:text-white font-bold">{{ footer.newsletter }}</span>
                             <input type="email" placeholder="Email" autocomplete="email" class="input" required>
                         </label>
 
-                        <button type="submit" class="flex justify-center items-center h-[2.375rem] aspect-square bg-primary rounded-full">
+                        <button type="submit" class="flex justify-center items-center h-[2.125rem] aspect-square bg-primary outline outline-1 outline-primary outline-offset-2 rounded-full">
                             <span class="sr-only">{{ footer.send }}</span>
 
                             <img
-                                src="/assets/svgs/footer/arrow_outward.svg"
+                                src="/assets/svgs/arrow_outward.svg"
                                 alt="Ikona šipky směřující nahoru"
                                 width="20"
                                 height="20"
@@ -72,43 +72,31 @@
 
                 <!-- NAVIGATION + CONTACTS -->
                 <div class="flex max-xl:flex-col-reverse ~gap-y-8/12 ~gap-x-16/28">
-                    <!-- NAVIGATION + LINKS -->
+                    <!-- NAVIGATIONS -->
                     <div class="flex ~gap-16/28">
                         <!-- NAVIGATION -->
-                        <div class="flex flex-col gap-3">
-                            <span class="font-lekton text-black dark:text-white font-bold">{{ footer.navigation.title }}</span>
+                        {% for navigation in footer.navigation %}
+                            <div class="flex flex-col gap-3">
+                                <span class="font-lekton text-lg text-black dark:text-white font-bold">{{ navigation.title }}</span>
 
-                            <!-- ITEMS -->
-                            <ul class="flex flex-col gap-3">
-                                {% for item in footer.navigation.items %}
-                                    <li>
-                                        <a href="{{ item.url }}" class="inline-block py-1 text-sm text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white hover:underline">{{ item.text }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-
-                        <!-- LINKS -->
-                        <div class="flex flex-col gap-3">
-                            <span class="font-lekton text-black dark:text-white font-bold">{{ footer.links.title }}</span>
-
-                            <!-- ITEMS -->
-                            <ul class="flex flex-col gap-3">
-                                {% for item in footer.links.items %}
-                                    <li>
-                                        <a href="{{ item.url }}" class="inline-block py-1 text-sm text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white hover:underline">{{ item.text }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                                <!-- ITEMS -->
+                                <ul class="flex flex-col gap-3">
+                                    {% for item in navigation.items %}
+                                        <li>
+                                            <a href="{{ item.url }}" class="relative inline-block py-1 text-sm text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white before:absolute before:bottom-0 before:left-0 before:h-0.5 before:w-full before:bg-black dark:before:bg-white before:transition-transform before:duration-500 before:ease-in-out before:scale-x-0 hover:before:scale-x-100">{{ item.text }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endfor %}
                     </div>
 
                     <!-- CONTACTS -->
                     <div class="flex flex-col sm:flex-row xl:flex-col ~gap-6/8 sm:gap-16 xl:gap-8">
                         {% for item in footer.contacts %}
                             <div class="flex flex-col items-start ~gap-1/1.5">
-                                <span class="font-lekton text-black dark:text-white font-bold">{{ item.title }}</span>
-                                <a href="{{ item.url }}" target="{{ item.target }}" class="inline-block pt-1 text-sm text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white hover:underline">
+                                <span class="font-lekton text-lg text-black dark:text-white font-bold">{{ item.title }}</span>
+                                <a href="{{ item.url }}" target="{{ item.target }}" class="relative inline-block pt-1 text-sm text-neutral-800 dark:text-neutral-200 hover:text-black dark:hover:text-white before:absolute before:-bottom-1 before:left-0 before:h-0.5 before:w-full before:bg-black dark:before:bg-white before:transition-transform before:duration-500 before:ease-in-out before:scale-x-0 hover:before:scale-x-100">
                                     {{ item.text | safe }}
                                 </a>
                             </div>

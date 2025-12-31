@@ -20,6 +20,11 @@ module.exports = {
         "4.5xl": ["2.5rem", "2.5rem"]
       },
       colors: {
+        coalsoft: "#00B5E2",
+        coalios: "#FF9E1B",
+        coaledu: "#F2C700",
+        coalmarketing: "#C181C6",
+        coalfamily: "#26C672",
         primary: {
           DEFAULT: '#FF9E1B',
           50: '#FFECD3',

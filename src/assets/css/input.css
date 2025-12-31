@@ -28,7 +28,7 @@
   /* =================== */
 
   .btn {
-    @apply bg-primary font-lekton text-center text-black font-bold !leading-none rounded-full shadow;
+    @apply relative flex justify-center items-center gap-4 bg-primary font-lekton text-center text-black font-bold !leading-none outline outline-1 outline-primary outline-offset-2 rounded-full shadow overflow-hidden z-10 transition-[color,_outline-color] duration-500 delay-[500ms,_0,_0] ease-in-out hover:text-white dark:hover:text-black hover:outline-black dark:hover:outline-white before:absolute before:inset-0 before:h-full before:w-full before:bg-black dark:before:bg-white before:rounded-full before:-z-10 before:transition-transform before:duration-500 before:ease-in-out before:origin-bottom before:scale-y-0 hover:before:scale-y-100;
   }
 
   .btn {
@@ -43,12 +43,28 @@
     @apply ~py-3/4 ~px-6/8 text-xl;
   }
 
+  .btn span:first-child {
+    @apply inline-block transition-[transform,_opacity] duration-500 ease-in-out;
+  }
+
+  .btn:hover span:first-child {
+    @apply -translate-y-8 opacity-0;
+  }
+
+  .btn span:nth-child(2) {
+    @apply inline-block absolute top-1/2 left-1/2 translate-y-8 -translate-x-1/2 whitespace-nowrap transition-[transform,_opacity] duration-500 ease-in-out opacity-0;
+  }
+
+  .btn:hover span:nth-child(2) {
+    @apply -translate-y-1/2 opacity-100;
+  }
+
   /* ============== */
   /* === TOPPER === */
   /* ============== */
 
   .topper {
-    @apply py-2 px-4 bg-primary-400 font-lekton text-black leading-none rounded-full;
+    @apply block py-2 px-4 bg-neutral-200 dark:bg-neutral-800 font-lekton text-black dark:text-white font-bold leading-none rounded-full;
   }
 
   /* ======================= */
@@ -62,7 +78,7 @@
       var(--glow-radius, 300px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
       rgba(var(--glow-rgb, 132, 0, 255), calc(var(--glow-intensity, 0) * 0.8)) 0%,
       rgba(var(--glow-rgb, 132, 0, 255), calc(var(--glow-intensity, 0) * 0.4)) 30%,
-      transparent 70%
+      transparent 50%
     ), 
     linear-gradient(to bottom, theme('colors.neutral.100'), theme('colors.neutral.300'));
     
@@ -76,7 +92,7 @@
       var(--glow-radius, 300px) circle at var(--glow-x, 50%) var(--glow-y, 50%),
       rgba(var(--glow-rgb, 132, 0, 255), calc(var(--glow-intensity, 0) * 0.8)) 0%,
       rgba(var(--glow-rgb, 132, 0, 255), calc(var(--glow-intensity, 0) * 0.4)) 30%,
-      transparent 70%
+      transparent 50%
     ), 
     linear-gradient(to bottom, theme('colors.neutral.700'), theme('colors.neutral.900'));
   }
@@ -87,8 +103,8 @@
 
   .global-spotlight {
     position: fixed;
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
     pointer-events: none;
     z-index: 50;

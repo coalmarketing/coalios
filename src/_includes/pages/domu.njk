@@ -36,10 +36,18 @@
                 <!-- CTA BUTTONS -->
                 <div class="flex max-sm:flex-col gap-y-2 ~gap-x-3/5">
                     <!-- PRIMARY CTA -->
-                    <a href="{{ hero.ctaPrimary.url }}" class="btn btn-lg">{{ hero.ctaPrimary.text }}</a>
+                    <a href="{{ hero.ctaPrimary.url }}" class="btn btn-lg">
+                        {% for _ in range(2) %}
+                            <span>{{ hero.ctaPrimary.text }}</span>
+                        {% endfor %}
+                    </a>
 
                     <!-- SECONDARY CTA -->
-                    <a href="{{ hero.ctaSecondary.url }}" class="btn btn-lg bg-white">{{ hero.ctaSecondary.text }}</a>
+                    <a href="{{ hero.ctaSecondary.url }}" class="btn btn-lg bg-white outline-white">
+                        {% for _ in range(2) %}
+                            <span>{{ hero.ctaSecondary.text }}</span>
+                        {% endfor %}
+                    </a>
                 </div>
             </div>
         </section>
@@ -49,7 +57,9 @@
             <div class="container m-auto flex flex-col items-center ~gap-6/8 overflow-hidden">
                 <!-- TOPPER + HEADING -->
                 <div class="flex flex-col items-center gap-4">
-                    <span class="topper">{{ partners.topper }}</span>
+                    <div class="border-gradient p-0.5 rounded-full">
+                        <span class="topper">{{ partners.topper }}</span>
+                    </div>
                     <h2 class="font-lekton text-center ~text-2xl/4xl text-black dark:text-white font-bold">{{ partners.heading }}</h2>
                 </div>
 
@@ -79,7 +89,9 @@
                 <div class="flex flex-col items-start ~gap-4/6">
                     <!-- TOPPER + HEADING -->
                     <div class="flex flex-col items-start gap-4">
-                        <span class="topper">{{ products.topper }}</span>
+                        <div class="border-gradient p-0.5 rounded-full">
+                            <span class="topper">{{ products.topper }}</span>
+                        </div>
                         <h2 class="~max-w-sm/xl font-lekton ~text-3xl/5xl text-black dark:text-white font-bold">{{ products.heading }}</h2>
                     </div>
 
@@ -87,7 +99,7 @@
                 </div>
 
                 <!-- ITEMS -->
-                <ul class="group grid grid-cols-1 xl:grid-cols-3 gap-y-12 ~gap-x-4/6" data-spotlight>
+                <ul class="group grid grid-cols-1 xl:grid-cols-3 gap-y-12 ~gap-x-4/6" data-spotlight="both">
                     {% for item in products.items %}
                         <li class="flex flex-col ~gap-4/6">
                             <!-- ICON -->
@@ -117,7 +129,11 @@
                                         <!-- TEXT -->
                                         <p class="text-neutral-800 dark:text-neutral-200">{{ item.text }}</p>
 
-                                        <a href="{{ item.cta.url }}" class="btn btn-sm">{{ item.cta.text }}</a>
+                                        <a href="{{ item.cta.url }}" class="btn btn-sm">
+                                            {% for _ in range(2) %}
+                                                <span>{{ item.cta.text }}</span>
+                                            {% endfor %}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +151,9 @@
             <div class="flex flex-col items-start sm:items-center ~gap-4/6">
                 <!-- TOPPER + HEADING -->
                 <div class="flex flex-col items-start sm:items-center gap-4">
-                    <span class="topper text-left sm:text-center">{{ benefits.topper }}</span>
+                    <div class="border-gradient p-0.5 rounded-full">
+                        <span class="topper text-left sm:text-center">{{ benefits.topper }}</span>
+                    </div>
                     <h2 class="font-lekton text-left sm:text-center ~text-3xl/5xl text-black dark:text-white font-bold">{{ benefits.heading }}</h2>
                 </div>
 
@@ -145,7 +163,7 @@
             <!-- ITEMS + CTA -->
             <div class="flex flex-col items-center gap-8">
                 <!-- ITEMS -->
-                <ul class="group grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ~gap-4/6" data-spotlight>
+                <ul class="group grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ~gap-4/6" data-spotlight="both">
                     {% for item in benefits.items %}
                         <li class="border-gradient p-0.5 rounded-3xl transition-transform duration-300 hover:-translate-y-0.5">
                             <!-- INNER CONTAINER -->
@@ -172,19 +190,25 @@
                 </ul>
 
                 <!-- CTA -->
-                <a href="{{ benefits.cta.url }}" class="btn btn-lg">{{ benefits.cta.text }}</a>
+                <a href="{{ benefits.cta.url }}" class="btn btn-lg">
+                    {% for _ in range(2) %}
+                        <span>{{ benefits.cta.text }}</span>
+                    {% endfor %}
+                </a>
             </div>
         </div>
     </section>
 
     <!-- MODULES -->
-    <section class="~pt-16/24 ~px-4/8 bg-white dark:bg-black">
+    <section class="~py-16/24 ~px-4/8 bg-white dark:bg-black">
         <div class="container m-auto flex flex-col ~gap-8/12">
             <!-- HEADING + TEXT -->
             <div class="flex max-lg:flex-col justify-between lg:items-end ~gap-4/6">
                 <!-- TOPPER + HEADING -->
                 <div class="flex flex-col items-start gap-4">
-                    <span class="topper">{{ modules.topper }}</span>
+                    <div class="border-gradient p-0.5 rounded-full">
+                        <span class="topper">{{ modules.topper }}</span>
+                    </div>
                     <h2 class="~max-w-sm/lg font-lekton ~text-3xl/5xl text-black dark:text-white font-bold">{{ modules.heading }}</h2>
                 </div>
 
@@ -207,11 +231,17 @@
                 <div class="flex justify-between items-end">
                     <!-- TOPPER + HEADING -->
                     <div class="flex flex-col items-start gap-4">
-                        <span class="topper">{{ blog.topper }}</span>
+                        <div class="border-gradient p-0.5 rounded-full">
+                            <span class="topper">{{ blog.topper }}</span>
+                        </div>
                         <h2 class="font-lekton ~text-3xl/5xl text-black dark:text-white font-bold">{{ blog.heading }}</h2>
                     </div>
 
-                    <a href="{{ blog.cta.url }}" class="max-md:hidden btn btn-lg">{{ blog.cta.text }}</a>
+                    <a href="{{ blog.cta.url }}" class="max-md:hidden btn btn-lg">
+                        {% for _ in range(2) %}
+                            <span>{{ blog.cta.text }}</span>
+                        {% endfor %}
+                    </a>
                 </div>
 
                 <!-- BLOG POSTS -->
@@ -228,7 +258,7 @@
                                     <source srcset="{% getUrl post.data.image | resize({ width: 744, height: 495 }) | webp %}" type="image/webp">
                                     <source srcset="{% getUrl post.data.image | resize({ width: 744, height: 495 }) | jpeg %}" type="image/jpeg">
                                     <img
-                                        class="object-cover w-full aspect-[3/2] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-1"
+                                        class="object-cover w-full aspect-[3/2] transition-transform duration-500 ease-in-out group-hover:scale-110"
                                         src="{% getUrl post.data.image | resize({ width: 744, height: 495 }) | jpeg %}"
                                         alt="{{ post.data.imageAlt }}"
                                         width="496"
@@ -245,7 +275,7 @@
                                 <!-- METADATA -->
                                 <ul class="flex ~gap-1.5/2">
                                     <!-- DATE -->
-                                    <li class="flex items-center gap-2 py-1 px-3 bg-neutral-200 dark:bg-neutral-900 ~text-sm/base text-neutral-700 dark:text-neutral-300 font-medium rounded-md [&>svg]:h-5 [&>svg]:w-5">
+                                    <li class="flex items-center gap-2 py-1 px-3 bg-neutral-200 dark:bg-neutral-900 ~text-sm/base text-neutral-700 dark:text-neutral-300 font-medium rounded-full [&>svg]:h-5 [&>svg]:w-5">
                                         <!-- ICON -->
                                         {% include "src/assets/svgs/blog/calendar_month.svg" %}
 
@@ -253,7 +283,7 @@
                                     </li>
 
                                     <!-- TIME TO READ -->
-                                    <li class="flex items-center gap-2 py-1 px-3 bg-neutral-200 dark:bg-neutral-900 ~text-sm/base text-neutral-700 dark:text-neutral-300 font-medium rounded-md [&>svg]:h-5 [&>svg]:w-5">
+                                    <li class="flex items-center gap-2 py-1 px-3 bg-neutral-200 dark:bg-neutral-900 ~text-sm/base text-neutral-700 dark:text-neutral-300 font-medium rounded-full [&>svg]:h-5 [&>svg]:w-5">
                                         <!-- ICON -->
                                         {% include "src/assets/svgs/blog/timer.svg" %}
 

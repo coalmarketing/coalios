@@ -22,64 +22,66 @@
             "text": "Instagram coalios"
         }
     ],
-    "navigation": {
-        "title": "Navigace",
-        "items": [
-            {
-                "url": "/",
-                "text": "Domů"
-            },
-            {
-                "url": "/o-nas",
-                "text": "O nás"
-            },
-            {
-                "url": "/produkty/helios-easy",
-                "text": "Helios Easy"
-            },
-            {
-                "url": "/produkty/helios-inuvio",
-                "text": "Helios Inuvio"
-            },
-            {
-                "url": "/produkty/coalshop-konektor",
-                "text": "coalshop konektor"
-            },
-            {
-                "url": "/kontakt",
-                "text": "Kontakt"
-            }
-        ]
-    },
-    "links": {
-        "title": "Užitečné odkazy",
-        "items": [
-            {
-                "url": "/news",
-                "text": "Novinky"
-            },
-            {
-                "url": "/kariera",
-                "text": "Kariéra"
-            },
-            {
-                "url": "/pro-firmy",
-                "text": "Pro firmy"
-            },
-            {
-                "url": "/pro-media",
-                "text": "Pro média"
-            },
-            {
-                "url": "/gdpr",
-                "text": "GDPR"
-            },
-            {
-                "url": "/sitemap.xml",
-                "text": "Sitemap"
-            }
-        ]
-    },
+    "navigation": [
+        {
+            "title": "Navigace",
+            "items": [
+                {
+                    "url": "/",
+                    "text": "Domů"
+                },
+                {
+                    "url": "/o-nas",
+                    "text": "O nás"
+                },
+                {
+                    "url": "/produkty/helios-easy",
+                    "text": "Helios Easy"
+                },
+                {
+                    "url": "/produkty/helios-inuvio",
+                    "text": "Helios Inuvio"
+                },
+                {
+                    "url": "/produkty/coalshop-konektor",
+                    "text": "coalshop konektor"
+                },
+                {
+                    "url": "/kontakt",
+                    "text": "Kontakt"
+                }
+            ]
+        },
+        {
+            "title": "Užitečné odkazy",
+            "items": [
+                {
+                    "url": "/news",
+                    "text": "Novinky"
+                },
+                {
+                    "url": "/kariera",
+                    "text": "Kariéra"
+                },
+                {
+                    "url": "/pro-firmy",
+                    "text": "Pro firmy"
+                },
+                {
+                    "url": "/pro-media",
+                    "text": "Pro média"
+                },
+                {
+                    "url": "/gdpr",
+                    "text": "GDPR"
+                },
+                {
+                    "url": "/sitemap.xml",
+                    "text": "Sitemap"
+                }
+            ]
+        }
+    ],
     "contacts": [
         {
             "title": "Kancelář",

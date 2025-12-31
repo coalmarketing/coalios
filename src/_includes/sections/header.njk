@@ -2,20 +2,27 @@
 <div class="fixed flex flex-col gap-4 w-full z-50 group-[.scroll]/body:~h-[4.75rem]/[5.5rem]">
 
   <!-- TOP BAR -->
-  <div class="relative py-3 ~px-4/8 bg-background z-20 transition-[transform,_height] duration-300 group-[.scroll]/body:-translate-y-full">
-    <ul class="container m-auto flex justify-end ~gap-2/4">
+  <div class="relative py-2.5 ~px-4/8 bg-background z-20 transition-[transform,_height] duration-300 group-[.scroll]/body:-translate-y-full">
+    <ul class="container m-auto flex justify-end ~gap-1/2">
       {% for item in topBar.items %}
         <li class="group relative">
           <a href="{{ item.url }}"
             target="{{ item.target }}"
-            class="{% if item.url.includes(client.domain) -%} text-primary {%- else -%} text-white transition-opacity duration-300 opacity-50 hover:opacity-100 {%- endif %}">
+            class="block p-0.5 {% if item.url.includes(client.domain) -%} text-primary {%- else -%} text-white transition-[opacity,_color] duration-300 opacity-50 hover:opacity-100
+              {%- if item.text === 'coalsoft' %} hover:text-coalsoft
+              {%- elif item.text === 'coalios' %} hover:text-coalios
+              {%- elif item.text === 'coaledu' %} hover:text-coaledu
+              {%- elif item.text === 'coalmarketing' %} hover:text-coalmarketing
+              {%- elif item.text === 'coalfamily' %} hover:text-coalfamily
+              {%- endif %}
+            {%- endif %}">
             <span class="sr-only">{{ item.text }}</span>
 
             {% include item.icon %}
           </a>
 
           <!-- TOOLTIP -->
-          <div class="absolute top-[calc(100%+1rem)] left-1/2 -translate-x-1/2 py-1 px-3 bg-neutral-900 text-center text-xs text-neutral-200 border border-neutral-700 rounded-full z-50 transition-[transform,_opacity] duration-300 -translate-y-full group-hover:translate-y-0 opacity-0 group-hover:opacity-100
+          <div class="absolute top-[calc(100%+1rem)] left-1/2 -translate-x-1/2 py-1 px-3 bg-neutral-900 text-center text-xs text-neutral-200 border border-neutral-700 rounded-full z-50 pointer-events-none transition-[transform,_opacity] duration-300 -translate-y-full group-hover:translate-y-0 opacity-0 group-hover:opacity-100
           before:absolute before:top-0 before:-translate-y-1/2 before:left-1/2 before:-translate-x-1/2 before:h-2 before:w-2 before:bg-neutral-900 before:border-t before:border-l before:border-neutral-700 before:rotate-45 before:-z-10">
             {{ item.text }}
           </div>
@@ -110,12 +117,16 @@
                   </div>
                 {% else %}
                   {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
-                  <a class="w-full ~p-1.5/4 whitespace-nowrap transition-colors duration-300
+                  <a class="group relative w-full ~p-1.5/4 whitespace-nowrap transition-colors duration-300
                     {%- if entry.url == page.url %} text-black dark:text-white font-semibold
-                    {%- else %} text-neutral-800 hover:text-black dark:text-neutral-200 dark:hover:text-white{% endif %}"
+                    {%- else %} text-neutral-800 hover:text-black dark:text-neutral-200 dark:hover:text-white {%- endif %}"
                     href="{{ entry.url }}"
                     {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
-                    {{ entry.key }}
+                    <span class="relative before:absolute before:-bottom-2 before:left-0 before:h-0.5 before:w-full before:transition-transform before:duration-500 before:ease-in-out
+                      {%- if entry.url == page.url %} before:bg-primary
+                      {%- else %} before:bg-black dark:before:bg-white before:scale-x-0 group-hover:before:scale-x-100 {%- endif %}">
+                      {{ entry.key }}
+                    </span>
                   </a>
                 {% endif %}
               </li>
@@ -156,7 +167,11 @@
           </label>
 
           <!-- CTA -->
-          <a href="/kontakt" class="max-lg:hidden btn">Napište nám</a>
+          <a href="/kontakt" class="max-lg:hidden btn">
+            {% for _ in range(2) %}
+              <span>Napište nám</span>
+            {% endfor %}
+          </a>
 
           <!-- MOBILE MENU BUTTON -->
           <button
@@ -237,9 +252,9 @@
         {% set hasChild = entry.children.length %}
 
         <li
-                class="group/li inline-flex {% if hasChild -%} dropdown {%- endif %}"
-                {%- if hasChild -%}tabindex="0"{%- endif -%}
-              >
+          class="group/li inline-flex {% if hasChild -%} dropdown {%- endif %}"
+          {%- if hasChild -%}tabindex="0"{%- endif -%}
+        >
 
           {# If the page has child dropdown pages, render it as a <button> tag with the appropriate dropdown HTML #}
           {% if hasChild %}
@@ -265,11 +280,10 @@
                 {% for child in entry.children %}
                   <li class="drop-li">
                     <a href="{{ child.url }}"
-                            class="li-link inline-flex whitespace-nowrap ~p-1.5/4 ~text-sm/base
-                            {%- if child.url == page.url %} text-white
-                            {%- else %} text-gray-200 hover:text-white{% endif %}"
-                            {%- if child.url == page.url -%}aria-current="page"{%- endif -%}
-                          >
+                      class="li-link inline-flex whitespace-nowrap ~p-1.5/4 ~text-sm/base
+                      {%- if child.url == page.url %} text-white
+                      {%- else %} text-gray-200 hover:text-white{% endif %}"
+                      {%- if child.url == page.url -%}aria-current="page"{%- endif -%}>
                       {{ child.key }}
                     </a>
                   </li>
@@ -279,11 +293,15 @@
           {% else %}
             {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
             <a class="w-full ~p-1.5/4 whitespace-nowrap transition-colors duration-300
-                    {%- if entry.url == page.url %} text-black dark:text-white font-semibold
-                    {%- else %} text-neutral-800 hover:text-black dark:text-neutral-200 dark:hover:text-white{% endif %}"
-                    href="{{ entry.url }}"
-                    {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
-              {{ entry.key }}
+              {%- if entry.url == page.url %} text-black dark:text-white font-semibold
+              {%- else %} text-neutral-800 hover:text-black dark:text-neutral-200 dark:hover:text-white{% endif %}"
+              href="{{ entry.url }}"
+              {%- if entry.url == page.url -%}aria-current="page"{%- endif -%}>
+              <span class="relative before:absolute before:-bottom-2 before:left-0 before:h-0.5 before:w-full before:transition-transform before:duration-500 before:ease-in-out
+                {%- if entry.url == page.url %} before:bg-primary
+                {%- else %} before:bg-black dark:before:bg-white before:scale-x-0 group-hover:before:scale-x-100 {%- endif %}">
+                {{ entry.key }}
+              </span>
             </a>
           {% endif %}
         </li>
