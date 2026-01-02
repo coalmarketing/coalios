@@ -45,8 +45,18 @@
 
                 <!-- INNER CONTAINER -->
                 <div class="spotlight-card flex justify-center items-center aspect-square ~p-4/8 bg-white dark:bg-neutral-900 rounded-full">
-                    <img class="h-auto w-full"
-                        src="/assets/svgs/products/coalshop-konektor.svg"
+                    <img class="block dark:hidden h-auto w-full"
+                        src="/assets/svgs/products/coalshop-konektor-black.svg"
+                        alt="Ikona coalshop konektor"
+                        width="184"
+                        height="60"
+                        loading="lazy"
+                        decoding="async"
+                        aria-hidden="true"
+                        draggable="false">
+
+                    <img class="hidden dark:block h-auto w-full"
+                        src="/assets/svgs/products/coalshop-konektor-white.svg"
                         alt="Ikona coalshop konektor"
                         width="184"
                         height="60"
@@ -82,6 +92,12 @@
                 {% for _ in range(2) %}
                     <span>{{ cta.cta.text }}</span>
                 {% endfor %}
+
+                <span class="icon">
+                    {% for _ in range(2) %}
+                        {% include "src/assets/svgs/arrow_outward.svg" %}
+                    {% endfor %}
+                </span>
             </a>
         </div>
     </div>

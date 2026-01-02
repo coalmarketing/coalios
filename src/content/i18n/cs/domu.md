@@ -29,45 +29,38 @@ partners:
   heading: Důvěřují nám významné firmy napříč obory
 
   items:
-    - url: https://coalfamily.cz/
-      text: coalfamily
-      logo: src/assets/svgs/partners/logo-1.svg
+    - url: https://aranys.cz/
+      text: Aranys
+      logo: src/assets/svgs/partners/aranys.svg
+      monochrome: true
 
-    - url: https://coalfamily.cz/
-      text: coalfamily
-      logo: src/assets/svgs/partners/logo-2.svg
+    - url: https://www.autocentrumcr.cz/
+      text: AutoCentrum ČR s.r.o.
+      logo: 
+        black: /assets/svgs/partners/autocentrum-cr-black.png
+        white: /assets/svgs/partners/autocentrum-cr-white.png
 
-    - url: https://coalfamily.cz/
-      text: coalfamily
-      logo: src/assets/svgs/partners/logo-3.svg
+    - url: https://stilmat.cz/
+      text: Stilmat s.r.o.
+      logo: /assets/svgs/partners/stilmat.png
 
-    - url: https://coalfamily.cz/
-      text: coalfamily
-      logo: src/assets/svgs/partners/logo-4.svg
+    - url: https://klas-nekor.cz/
+      text: KLAS nekoř a. s.
+      logo: 
+        black: /assets/svgs/partners/klas-nekor-black.png
+        white: /assets/svgs/partners/klas-nekor-white.png
 
-    - url: https://coalfamily.cz/
-      text: coalfamily
-      logo: src/assets/svgs/partners/logo-5.svg
+    - url: https://www.simek.eu/
+      text: ŠIMEK proficentrum s.r.o.
+      logo: 
+        black: /assets/svgs/partners/simek-proficentrum-black.png
+        white: /assets/svgs/partners/simek-proficentrum-white.png
 
-    - url: https://coalfamily.cz/
-      text: coalfamily
-      logo: src/assets/svgs/partners/logo-1.svg
-
-    - url: https://coalfamily.cz/
-      text: coalfamily
-      logo: src/assets/svgs/partners/logo-2.svg
-
-    - url: https://coalfamily.cz/
-      text: coalfamily
-      logo: src/assets/svgs/partners/logo-3.svg
-
-    - url: https://coalfamily.cz/
-      text: coalfamily
-      logo: src/assets/svgs/partners/logo-4.svg
-
-    - url: https://coalfamily.cz/
-      text: coalfamily
-      logo: src/assets/svgs/partners/logo-5.svg
+    - url: https://www.cyklosvec.cz/
+      text: CYKLOŠVEC s r.o.
+      logo: 
+        black: /assets/svgs/partners/cyklosvec-black.png
+        white: /assets/svgs/partners/cyklosvec-white.png
 
 
 products:
@@ -98,7 +91,9 @@ products:
         url: /produkty/helios-inuvio
         text: Zjistit více
 
-    - icon: /assets/svgs/products/coalshop-konektor.svg
+    - icon:
+        black: /assets/svgs/products/coalshop-konektor-black.svg
+        white: /assets/svgs/products/coalshop-konektor-white.svg
       
       title: coalshop konektor
       subtitle: Pro firmy provozující e-shop

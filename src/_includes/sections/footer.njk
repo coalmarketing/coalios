@@ -41,11 +41,12 @@
                             <input type="email" placeholder="Email" autocomplete="email" class="input" required>
                         </label>
 
-                        <button type="submit" class="flex justify-center items-center h-[2.125rem] aspect-square bg-primary outline outline-1 outline-primary outline-offset-2 rounded-full">
+                        <button type="submit" class="group relative flex justify-center items-center h-[2.125rem] aspect-square bg-primary text-white dark:text-black outline outline-1 outline-primary outline-offset-2 rounded-full overflow-hidden z-10 transition-[outline-color] duration-500 ease-in-out hover:outline-black dark:hover:outline-white before:absolute before:inset-0 before:h-full before:w-full before:bg-black dark:before:bg-white before:rounded-full before:-z-10 before:transition-transform before:duration-500 before:ease-in-out before:origin-bottom before:scale-y-0 hover:before:scale-y-100">
                             <span class="sr-only">{{ footer.send }}</span>
 
                             <img
-                                src="/assets/svgs/arrow_outward.svg"
+                                class="transition-[transform,_opacity] duration-500 ease-in-out group-hover:-translate-y-8 group-hover:translate-x-8 group-hover:opacity-0"
+                                src="/assets/svgs/arrow_outward-black.svg"
                                 alt="Ikona šipky směřující nahoru"
                                 width="20"
                                 height="20"
@@ -53,6 +54,19 @@
                                 decoding="async"
                                 aria-hidden="true"
                                 draggable="false">
+
+                            {% for _ in range(2) %}
+                                <img
+                                    class="{% if loop.index === 1 -%} block dark:hidden {%- else -%} hidden dark:block {%- endif %} absolute top-1/2 left-1/2 translate-y-8 -translate-x-8 whitespace-nowrap transition-[transform,_opacity] duration-500 ease-in-out opacity-0 group-hover:-translate-y-1/2 group-hover:-translate-x-1/2 group-hover:opacity-100"
+                                    src="{% if loop.index === 1 -%} /assets/svgs/arrow_outward-white.svg {%- else -%} /assets/svgs/arrow_outward-black.svg {%- endif %}"
+                                    alt="Ikona šipky směřující nahoru"
+                                    width="20"
+                                    height="20"
+                                    loading="lazy"
+                                    decoding="async"
+                                    aria-hidden="true"
+                                    draggable="false">
+                            {% endfor %}
                         </button>
                     </form>
 

@@ -57,10 +57,9 @@
                     </label>
                 {% endfor %}
 
-                <button type="submit" class="btn col-span-2">
-                    {% for _ in range(2) %}
-                        <span>{{ contactForm.form.send }}</span>
-                    {% endfor %}
+                <button type="submit" class="group btn col-span-2 py-3">
+                    <span>{{ contactForm.form.send }}</span>
+                    <span class="!left-1/2 -translate-x-1/2">{{ contactForm.form.send }}</span>
                 </button>
             </form>
         </div>

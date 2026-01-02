@@ -28,20 +28,22 @@
   /* =================== */
 
   .btn {
-    @apply relative flex justify-center items-center gap-4 bg-primary font-lekton text-center text-black font-bold !leading-none outline outline-1 outline-primary outline-offset-2 rounded-full shadow overflow-hidden z-10 transition-[color,_outline-color] duration-500 delay-[500ms,_0,_0] ease-in-out hover:text-white dark:hover:text-black hover:outline-black dark:hover:outline-white before:absolute before:inset-0 before:h-full before:w-full before:bg-black dark:before:bg-white before:rounded-full before:-z-10 before:transition-transform before:duration-500 before:ease-in-out before:origin-bottom before:scale-y-0 hover:before:scale-y-100;
+    @apply relative flex justify-center items-center bg-primary font-lekton text-center text-black font-bold !leading-none outline outline-1 outline-primary outline-offset-2 rounded-full shadow overflow-hidden z-10 transition-[color,_outline-color] duration-500 ease-in-out hover:text-white dark:hover:text-black hover:outline-black dark:hover:outline-white before:absolute before:inset-0 before:h-full before:w-full before:bg-black dark:before:bg-white before:rounded-full before:-z-10 before:transition-transform before:duration-500 before:ease-in-out before:origin-bottom before:scale-y-0 hover:before:scale-y-100;
   }
 
   .btn {
-    @apply py-3 px-6 text-lg;
+    @apply gap-3 ~py-1/1.5 pl-5 pr-2 text-lg;
   }
 
   .btn-sm {
-    @apply py-2 px-5 text-lg;
+    @apply gap-2.5 py-1.5 pl-4 pr-2 text-lg;
   }
 
   .btn-lg {
-    @apply ~py-3/4 ~px-6/8 text-xl;
+    @apply gap-3.5 ~py-1/2 ~pl-5/7 text-xl;
   }
+
+  /* === CTA BUTTON TEXT === */
 
   .btn span:first-child {
     @apply inline-block transition-[transform,_opacity] duration-500 ease-in-out;
@@ -52,11 +54,73 @@
   }
 
   .btn span:nth-child(2) {
-    @apply inline-block absolute top-1/2 left-1/2 translate-y-8 -translate-x-1/2 whitespace-nowrap transition-[transform,_opacity] duration-500 ease-in-out opacity-0;
+    @apply inline-block absolute top-1/2 translate-y-8 left-6 whitespace-nowrap transition-[transform,_opacity] duration-500 ease-in-out opacity-0;
+  }
+
+  .btn span:nth-child(2) {
+    @apply left-5;
+  }
+
+  .btn-sm span:nth-child(2) {
+    @apply left-4;
+  }
+
+  .btn-lg span:nth-child(2) {
+    @apply ~left-5/7;
   }
 
   .btn:hover span:nth-child(2) {
     @apply -translate-y-1/2 opacity-100;
+  }
+
+  /* === CTA BUTTON ICON === */
+
+  .btn .icon {
+    @apply relative bg-black text-white rounded-full overflow-hidden transition-colors duration-500 ease-in-out;
+  }
+
+  .btn .icon {
+    @apply p-1.5;
+
+    svg {
+      @apply h-5 w-5;
+    }
+  }
+
+  .btn-sm .icon {
+    @apply p-1;
+
+    svg {
+      @apply h-4 w-4;
+    }
+  }
+
+  .btn-lg .icon {
+    @apply p-2;
+
+    svg {
+      @apply h-6 w-6;
+    }
+  }
+
+  .btn:hover .icon {
+    @apply bg-white text-black dark:bg-black dark:text-white;
+  }
+
+  .btn .icon svg:first-child {
+    @apply transition-[transform,_opacity] duration-500 ease-in-out;
+  }
+
+  .btn:hover .icon svg:first-child {
+    @apply -translate-y-4 translate-x-4 opacity-0;
+  }
+
+  .btn .icon svg:nth-child(2) {
+    @apply absolute top-1/2 left-1/2 translate-y-4 -translate-x-8 transition-[transform,_opacity] duration-500 ease-in-out opacity-0;
+  }
+
+  .btn:hover .icon svg:nth-child(2) {
+    @apply -translate-y-1/2 -translate-x-1/2 opacity-100;
   }
 
   /* ============== */

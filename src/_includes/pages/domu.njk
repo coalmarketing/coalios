@@ -40,6 +40,12 @@
                         {% for _ in range(2) %}
                             <span>{{ hero.ctaPrimary.text }}</span>
                         {% endfor %}
+
+                        <span class="icon">
+                            {% for _ in range(2) %}
+                                {% include "src/assets/svgs/arrow_outward.svg" %}
+                            {% endfor %}
+                        </span>
                     </a>
 
                     <!-- SECONDARY CTA -->
@@ -47,6 +53,12 @@
                         {% for _ in range(2) %}
                             <span>{{ hero.ctaSecondary.text }}</span>
                         {% endfor %}
+
+                        <span class="icon">
+                            {% for _ in range(2) %}
+                                {% include "src/assets/svgs/arrow_outward.svg" %}
+                            {% endfor %}
+                        </span>
                     </a>
                 </div>
             </div>
@@ -66,13 +78,66 @@
                 <!-- LOGOS -->
                 <div class="relative group py-4">
                     {% for _ in range(2) %}
-                        <ul class="flex items-center ~gap-12/24 group-hover:[animation-play-state:paused] {% if loop.index === 1 -%} animate-marquee {%- else -%} absolute top-4 ~left-12/24 animate-marquee2 {%- endif %}">
+                        <ul class="flex items-center ~gap-12/24 group-hover:[animation-play-state:paused] {% if loop.index === 1 -%} animate-marquee {%- else -%} absolute top-4 ~left-12/24 w-full animate-marquee2 {%- endif %}">
                             {% for item in partners.items %}
                                 <li>
-                                    <a href="{{ item.url }}" target="_blank" class="text-black dark:text-white transition-opacity duration-300 opacity-50 hover:opacity-100 [&>svg]:~h-6/8 [&>svg]:w-auto">
+                                    <a href="{{ item.url }}" target="_blank" class="block h-12 w-auto [&>svg]:h-full [&>svg]:w-auto transition-[filter,_opacity] duration-300 grayscale hover:grayscale-0 opacity-50 hover:opacity-100 {%- if item.monochrome %} text-black dark:text-white {%- endif %}">
                                         <span class="sr-only">{{ item.text }}</span>
 
-                                        {% include item.logo %}
+                                        {% if item.logo.black and item.logo.white %}
+                                            <!-- BLACK LOGO -->
+                                            <picture>
+                                                <source srcset="{% getUrl item.logo.black | resize({ height: 72 }) | avif %}" type="image/avif">
+                                                <source srcset="{% getUrl item.logo.black | resize({ height: 72 }) | webp %}" type="image/webp">
+                                                <source srcset="{% getUrl item.logo.black | resize({ height: 72 }) | png %}" type="image/jpeg">
+                                                <img class="block dark:hidden h-full w-auto"
+                                                    src="{% getUrl item.logo.black | resize({ height: 72 }) | png %}"
+                                                    alt="{{ item.text }}"
+                                                    width="128"
+                                                    height="48"
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    aria-hidden="true"
+                                                    draggable="false">
+                                            </picture>
+
+                                            <!-- WHITE LOGO -->
+                                            <picture>
+                                                <source srcset="{% getUrl item.logo.white | resize({ height: 72 }) | avif %}" type="image/avif">
+                                                <source srcset="{% getUrl item.logo.white | resize({ height: 72 }) | webp %}" type="image/webp">
+                                                <source srcset="{% getUrl item.logo.white | resize({ height: 72 }) | png %}" type="image/jpeg">
+                                                <img class="hidden dark:block h-full w-auto"
+                                                    src="{% getUrl item.logo.white | resize({ height: 72 }) | png %}"
+                                                    alt="{{ item.text }}"
+                                                    width="128"
+                                                    height="48"
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    aria-hidden="true"
+                                                    draggable="false">
+                                            </picture>
+
+                                        {% elif item
+                                                .logo
+                                                .endsWith(".svg") %}
+                                            {% include item.logo %}
+
+                                        {% else %}
+                                            <picture>
+                                                <source srcset="{% getUrl item.logo | resize({ height: 72 }) | avif %}" type="image/avif">
+                                                <source srcset="{% getUrl item.logo | resize({ height: 72 }) | webp %}" type="image/webp">
+                                                <source srcset="{% getUrl item.logo | resize({ height: 72 }) | png %}" type="image/jpeg">
+                                                <img class="h-full w-auto"
+                                                    src="{% getUrl item.logo | resize({ height: 72 }) | png %}"
+                                                    alt="{{ item.text }}"
+                                                    width="128"
+                                                    height="48"
+                                                    loading="lazy"
+                                                    decoding="async"
+                                                    aria-hidden="true"
+                                                    draggable="false">
+                                            </picture>
+                                        {% endif %}
                                     </a>
                                 </li>
                             {% endfor %}
@@ -103,16 +168,40 @@
                     {% for item in products.items %}
                         <li class="flex flex-col ~gap-4/6">
                             <!-- ICON -->
-                            <img
-                                class="self-start ~h-14/16 w-auto ~ml-6/8"
-                                src="{{ item.icon }}"
-                                alt="{{ item.title }}"
-                                width="138"
-                                height="64"
-                                loading="lazy"
-                                decoding="async"
-                                aria-hidden="true"
-                                draggable="false">
+                            {% if item.icon.black and item.icon.black %}
+                                <img
+                                    class="block dark:hidden self-start ~h-14/16 w-auto ~ml-6/8"
+                                    src="{{ item.icon.black }}"
+                                    alt="{{ item.title }}"
+                                    width="138"
+                                    height="64"
+                                    loading="lazy"
+                                    decoding="async"
+                                    aria-hidden="true"
+                                    draggable="false">
+
+                                <img
+                                    class="hidden dark:block self-start ~h-14/16 w-auto ~ml-6/8"
+                                    src="{{ item.icon.white }}"
+                                    alt="{{ item.title }}"
+                                    width="138"
+                                    height="64"
+                                    loading="lazy"
+                                    decoding="async"
+                                    aria-hidden="true"
+                                    draggable="false">
+                            {% else %}
+                                <img
+                                    class="self-start ~h-14/16 w-auto ~ml-6/8"
+                                    src="{{ item.icon }}"
+                                    alt="{{ item.title }}"
+                                    width="138"
+                                    height="64"
+                                    loading="lazy"
+                                    decoding="async"
+                                    aria-hidden="true"
+                                    draggable="false">
+                            {% endif %}
 
                             <!-- CONTENT -->
                             <div class="border-gradient p-0.5 rounded-3xl transition-transform duration-300 hover:-translate-y-0.5">
@@ -133,6 +222,12 @@
                                             {% for _ in range(2) %}
                                                 <span>{{ item.cta.text }}</span>
                                             {% endfor %}
+
+                                            <span class="icon">
+                                                {% for _ in range(2) %}
+                                                    {% include "src/assets/svgs/arrow_forward.svg" %}
+                                                {% endfor %}
+                                            </span>
                                         </a>
                                     </div>
                                 </div>
@@ -194,6 +289,12 @@
                     {% for _ in range(2) %}
                         <span>{{ benefits.cta.text }}</span>
                     {% endfor %}
+
+                    <span class="icon">
+                        {% for _ in range(2) %}
+                            {% include "src/assets/svgs/arrow_outward.svg" %}
+                        {% endfor %}
+                    </span>
                 </a>
             </div>
         </div>
@@ -241,6 +342,12 @@
                         {% for _ in range(2) %}
                             <span>{{ blog.cta.text }}</span>
                         {% endfor %}
+
+                        <span class="icon">
+                            {% for _ in range(2) %}
+                                {% include "src/assets/svgs/arrow_outward.svg" %}
+                            {% endfor %}
+                        </span>
                     </a>
                 </div>
 

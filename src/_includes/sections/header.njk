@@ -2,13 +2,13 @@
 <div class="fixed flex flex-col gap-4 w-full z-50 group-[.scroll]/body:~h-[4.75rem]/[5.5rem]">
 
   <!-- TOP BAR -->
-  <div class="relative py-2.5 ~px-4/8 bg-background z-20 transition-[transform,_height] duration-300 group-[.scroll]/body:-translate-y-full">
+  <div class="relative py-2.5 ~px-4/8 bg-white/50 dark:bg-black/50 border-b border-white/30 dark:border-black/30 z-20 transition-[transform,_height] duration-300 group-[.scroll]/body:-translate-y-full">
     <ul class="container m-auto flex justify-end ~gap-1/2">
       {% for item in topBar.items %}
         <li class="group relative">
           <a href="{{ item.url }}"
             target="{{ item.target }}"
-            class="block p-0.5 {% if item.url.includes(client.domain) -%} text-primary {%- else -%} text-white transition-[opacity,_color] duration-300 opacity-50 hover:opacity-100
+            class="block p-0.5 {% if item.url.includes(client.domain) -%} text-primary {%- else -%} text-black dark:text-white transition-[opacity,_color] duration-300 opacity-50 hover:opacity-100
               {%- if item.text === 'coalsoft' %} hover:text-coalsoft
               {%- elif item.text === 'coalios' %} hover:text-coalios
               {%- elif item.text === 'coaledu' %} hover:text-coaledu
@@ -33,7 +33,7 @@
 
   <!-- HEADER -->
   <div class="~px-4/8 transition-[background-color,_transform] duration-300 group-[.scroll]/body:bg-white/90 dark:group-[.scroll]/body:bg-black/90 group-[.scroll]/body:-translate-y-[4.25rem]">
-    <header class="container m-auto ~py-3/4 ~pl-6/12 ~pr-4/8 bg-white/50 dark:bg-black/50 border-none border-white/30 dark:border-black/30 shadow rounded-full transition-[padding,_background-color,_max-width,_border-color,_border-radius] duration-300 group-[.scroll]/body:px-0 group-[.scroll]/body:bg-transparent group-[.scroll]/body:max-w-full group-[.scroll]/body:border-0 group-[.scroll]/body:border-transparent group-[.scroll]/body:shadow-none group-[.scroll]/body:rounded-none">
+    <header class="container m-auto ~py-3/4 ~pl-6/12 ~pr-4/8 bg-white/50 dark:bg-black/50 border border-white/30 dark:border-black/30 shadow rounded-full transition-[padding,_background-color,_max-width,_border-color,_border-radius] duration-300 group-[.scroll]/body:px-0 group-[.scroll]/body:bg-transparent group-[.scroll]/body:max-w-full group-[.scroll]/body:border-0 group-[.scroll]/body:border-transparent group-[.scroll]/body:shadow-none group-[.scroll]/body:rounded-none">
       <div class="container m-auto flex justify-between items-center gap-8">
         <!-- LOGO -->
         <a href="/">
@@ -171,6 +171,12 @@
             {% for _ in range(2) %}
               <span>Napište nám</span>
             {% endfor %}
+
+            <span class="icon">
+              {% for _ in range(2) %}
+                {% include "src/assets/svgs/arrow_outward.svg" %}
+              {% endfor %}
+            </span>
           </a>
 
           <!-- MOBILE MENU BUTTON -->
